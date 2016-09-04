@@ -1,0 +1,104 @@
+﻿body {
+}
+    #homepanel,#products,#p1f, #p2f, #p3f, #p4f {
+    vertical-align:top;
+    width: 100%;  
+    height: 670px;
+    text-align: right;
+    border: solid 5px #c3c3c3;
+    }
+
+    #col2 {
+    vertical-align:top;
+    width: 40%;  
+    text-align: left;
+    height: 90%;
+    }
+
+    #products, #p1f, #p2f, #p3f, #p4f {
+    padding: 0px;
+    display: none;
+    }
+
+    #p2af {
+    vertical-align:top;
+    width: 100%;  
+    height: 200px;
+    text-align: right;
+    border: solid 1px #c3c3c3;
+    }
+
+    #p2bf {
+    vertical-align:top;
+    width: 100%;  
+    height: 50px;
+    text-align: right;
+    border: solid 1px #c3c3c3;
+    }
+
+
+    
+
+    #CustLogoContainer {
+        width: 150px;
+        height: 100px;
+    }
+
+    #CustLogoContainer img {
+        width: 100%;
+    }
+
+    #CustP1Container {
+        width: 100px;
+        height: 100px;
+    }
+
+    #CustP1Container img {
+        width: 100%;
+    }
+
+     #CustP2Container {
+        width: 100px;
+        height: 100px;
+    }
+
+    #CustP2Container img {
+        width: 100%;
+    }
+
+     #CustP3Container {
+        width: 100px;
+        height: 100px;
+    }
+
+    #CustP3Container img {
+        width: 100%;
+    }
+
+     #CustP4Container {
+        width: 100px;
+        height: 100px;
+    }
+
+    #CustP4Container img {
+        width: 100%;
+    }
+
+    .defaultbackgroundimg {
+        background-image:url(images\DefualtBackground.jpg);
+        height: 600px;
+        width: 1000px;
+    }
+
+.spimg {
+    width: 954px;
+    margin-bottom: 30px;
+    background-color: white;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #d2d2d2;
+
+    /* gradients */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, white), color-stop(50%, white), color-stop(170%, #f6f6f6));
+    background: -moz-linear-gradient(top, white 0%, white 55%, #f6f6f6 150%);  
+}
