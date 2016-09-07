@@ -1,23 +1,21 @@
 // JavaScript source code
 window.addEventListener('resize', vAlign);
 
-// VERTICALLY ALIGN FUNCTION
-function vAlign() {
-	var ah = $("#outside").height();
-	var ph = window.innerHeight;
-	var mh = Math.ceil((ph-ah) / 4);
-	$("#outside").css('margin-top', mh);
 
-  //ah = $(".row-2").height();
-  //ph = $(".row-2").parent().height();
-  mh = Math.ceil((mh) / 2);
-  $(".row-2").css('margin-top', mh);
-
-	ah = $("#wrapper").height();
-	ph = window.innerHeight;
-	mh = Math.ceil((ph-ah) / 5.5);
-	$("#wrapper").css('margin-top', mh);
-};
+$(document).ready(function () {
+    var now = new Date();
+    var hours = now.getHours();
+    console.log("Hours = " + hours);
+    var msg;
+    if (hours < 12) msg = "Good Morning";
+    else if (hours < 18) msg = "Good Afternoon";
+    else msg = "Good Evening";
+    console.log("msg = " + msg);
+    $(".greeting").text(function () {
+        return $(this).text().replace("Good Morning", msg);
+    });
+    //$('.greeting').text(msg);
+});
 
 $(document).ready(function () {
     $("#cust-image").click(function () {

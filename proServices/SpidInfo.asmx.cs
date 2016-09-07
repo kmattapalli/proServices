@@ -32,9 +32,9 @@ namespace SCITY
           //string SpidId = "1";
           List<object> spidbasiclist = new List<object>();
 
-          //string connect = "Server=SYS\\SQLEXPRESS;Database=SCITY;User Id=scity;Password=scity;Trusted_Connection=True";
+            //string connect = "Server=tcp:scityserver.database.windows.net,1433;Database=SCityDB;User ID=kmattapalli@scityserver;Password=Chcicken@65;Trusted_Connection=False;Encrypt=True;Connection Timeout=30";
 
-          string strcon = ConfigurationManager.ConnectionStrings["scs"].ConnectionString;
+            string strcon = ConfigurationManager.ConnectionStrings["scs"].ConnectionString;
 
           string query = "select p.spid as spid, p.date_created as spid_date_created," +
                      "sp.lastname as sp_lastname,sp.firstname as sp_firstname,sp.city as sp_city, sp.date_created as sp_date_joined,sp.phone as sp_phone," +
