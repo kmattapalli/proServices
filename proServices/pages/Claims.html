@@ -1,0 +1,19 @@
+﻿        <!-- PRODUCT 1 VALUES BEGIN -->
+<div id="p1-claims" border="0">
+    <!--<h2 alingn="center"><img id="p1i1" src="images\p1_features.jpg" /></h2>-->
+    <h4 id="p1-claims-title" align="center">{{claimsTitle}}</h4>
+
+    <div id="claims-content">
+        <div id="pp-row-1" class="row row-centered" ng-repeat="i in getRowsClaims(numRowsClaims) track by $index">
+            <div id="pp1" class="col m6 col-centered" ng-repeat="x in claims[$index]">
+                <img id="pp1img" class="responsive-img" ng-src="{{x.claimImg}}" /><br />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col m3">
+                <a href="#/p{{ppId}}-awards"><i class="material-icons icon-900">keyboard_arrow_right</i></a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- PRODUCT 1 VALUES END -->

@@ -1,0 +1,19 @@
+﻿        <!-- PRODUCT 1 VALUES BEGIN -->
+<div id="p1-values" border="0">
+    <!--<h2 alingn="center"><img id="p1i1" src="images\p1_features.jpg" /></h2>-->
+    <h4 id="p1-values-title" align="center">{{valuesTitle}}</h4>
+        
+        <div  id="p1-values-wrapper" class="row vertical-align">
+            <div class="col m10">
+                <ul id="p1-values-list" class="collection">
+                    <li ng-repeat="value in values" class="collection-item">
+                        <i class="material-icons">done</i> {{value}}
+                    </li>
+                </ul>
+            </div>
+            <div class="col m2">
+                <a href="#/p{{ppId}}-specs"><i class="material-icons icon-1000">keyboard_arrow_right</i></a>
+            </div>
+        </div>
+</div>
+<!-- PRODUCT 1 VALUES END -->

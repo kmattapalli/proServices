@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetSpidBasic">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SpidId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSpidBasicResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSpidBasicResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSpidProducts">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SpidId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSpidProductsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSpidProductsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSpidProductValues">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="spMapId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSpidProductValuesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSpidProductValuesResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSpidProductSpecs">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="spMapId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSpidProductSpecsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSpidProductSpecsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSpidProductManuals">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="spMapId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSpidProductManualsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSpidProductManualsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSpidProductBenefits">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="spMapId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSpidProductBenefitsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSpidProductBenefitsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetSpidBasicSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSpidBasic" />
+  </wsdl:message>
+  <wsdl:message name="GetSpidBasicSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSpidBasicResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSpidProductsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSpidProducts" />
+  </wsdl:message>
+  <wsdl:message name="GetSpidProductsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSpidProductsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSpidProductValuesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSpidProductValues" />
+  </wsdl:message>
+  <wsdl:message name="GetSpidProductValuesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSpidProductValuesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSpidProductSpecsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSpidProductSpecs" />
+  </wsdl:message>
+  <wsdl:message name="GetSpidProductSpecsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSpidProductSpecsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSpidProductManualsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSpidProductManuals" />
+  </wsdl:message>
+  <wsdl:message name="GetSpidProductManualsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSpidProductManualsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSpidProductBenefitsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSpidProductBenefits" />
+  </wsdl:message>
+  <wsdl:message name="GetSpidProductBenefitsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSpidProductBenefitsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="SpidInfoSoap">
+    <wsdl:operation name="GetSpidBasic">
+      <wsdl:input message="tns:GetSpidBasicSoapIn" />
+      <wsdl:output message="tns:GetSpidBasicSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSpidProducts">
+      <wsdl:input message="tns:GetSpidProductsSoapIn" />
+      <wsdl:output message="tns:GetSpidProductsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSpidProductValues">
+      <wsdl:input message="tns:GetSpidProductValuesSoapIn" />
+      <wsdl:output message="tns:GetSpidProductValuesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSpidProductSpecs">
+      <wsdl:input message="tns:GetSpidProductSpecsSoapIn" />
+      <wsdl:output message="tns:GetSpidProductSpecsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSpidProductManuals">
+      <wsdl:input message="tns:GetSpidProductManualsSoapIn" />
+      <wsdl:output message="tns:GetSpidProductManualsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSpidProductBenefits">
+      <wsdl:input message="tns:GetSpidProductBenefitsSoapIn" />
+      <wsdl:output message="tns:GetSpidProductBenefitsSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SpidInfoSoap" type="tns:SpidInfoSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetSpidBasic">
+      <soap:operation soapAction="http://tempuri.org/GetSpidBasic" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSpidProducts">
+      <soap:operation soapAction="http://tempuri.org/GetSpidProducts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSpidProductValues">
+      <soap:operation soapAction="http://tempuri.org/GetSpidProductValues" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSpidProductSpecs">
+      <soap:operation soapAction="http://tempuri.org/GetSpidProductSpecs" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSpidProductManuals">
+      <soap:operation soapAction="http://tempuri.org/GetSpidProductManuals" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSpidProductBenefits">
+      <soap:operation soapAction="http://tempuri.org/GetSpidProductBenefits" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SpidInfoSoap12" type="tns:SpidInfoSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetSpidBasic">
+      <soap12:operation soapAction="http://tempuri.org/GetSpidBasic" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSpidProducts">
+      <soap12:operation soapAction="http://tempuri.org/GetSpidProducts" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSpidProductValues">
+      <soap12:operation soapAction="http://tempuri.org/GetSpidProductValues" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSpidProductSpecs">
+      <soap12:operation soapAction="http://tempuri.org/GetSpidProductSpecs" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSpidProductManuals">
+      <soap12:operation soapAction="http://tempuri.org/GetSpidProductManuals" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSpidProductBenefits">
+      <soap12:operation soapAction="http://tempuri.org/GetSpidProductBenefits" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SpidInfo">
+    <wsdl:port name="SpidInfoSoap" binding="tns:SpidInfoSoap">
+      <soap:address location="http://localhost/SpidInfo.asmx" />
+    </wsdl:port>
+    <wsdl:port name="SpidInfoSoap12" binding="tns:SpidInfoSoap12">
+      <soap12:address location="http://localhost/SpidInfo.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

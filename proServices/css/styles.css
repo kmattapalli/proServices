@@ -4,10 +4,31 @@ body, h3, h4{
 		-webkit-font-smoothing: antialiased;
 }
 
-#ibody {
-  /*background-color:#fffde7;*/
+
+.margin-top{
+    margin-top: 100px;
 }
-.products.horizTranslate {
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    
+}
+.bgImg{
+    background: url(../images/DefaultBackground.jpg) no-repeat left bottom;
+    background-size: auto;
+}
+main {
+    flex: 1 0 auto;
+}
+footer.page-footer{
+    padding-bottom: 20px;
+}
+#outside1{
+    margin-top: 100px;
+}
+/*
+.painpoints.horizTranslate {
   -webkit-transition: 3s;
   -moz-transition: 3s;
   -ms-transition: 3s;
@@ -15,11 +36,13 @@ body, h3, h4{
   transition: 3s;
   margin-left: auto !important;
 }
+*/
 #img2, #img3, #img4, #img5{
 	height: 100px;
 	width: 150px;
 	object-fit: contain;
 }
+/*
 footer{
 	background: #fcfcfc;
   padding: 20px;
@@ -27,12 +50,15 @@ footer{
   -webkit-font-smoothing: antialiased;
 	height: 100px;
 }
+*/
+/*
 #cust-image{
 	float: right;
   display: block;
 }
-img{
-	cursor: pointer;
+*/
+img, #p1-values-next{
+	//cursor: pointer;
 }
 #img-right{
 	text-align: right;
@@ -66,23 +92,32 @@ text-align: center;
 .border{
     border: 2px solid;
 }
-#products, #p1f{
+#p1-values{
     /*min-height: 95%;*/
 		position:relative;
 }
-#products{
-	display: none;
+#p1-values-list > li{
+    font-size: 150%;
 }
-.greeting, #panel > div > h2{
+.icon-900{
+    font-size: 800%;
+} 
+.icon-1000{
+    font-size: 1000%;
+}
+#painpoints-wrapper{
+	//display: none;
+}
+#welcome-page-header{
 	padding-right: 30px;
-	padding-top: 50px;
+	margin-top: 100px;
 	text-align: right;
 }
 
-#products > div > h3{
+#painpoints-wrapper > div > h3{
     text-align: left;
 }
-#products > div {
+#painpoints-wrapper > div {
   text-align: center;
 }
 #p2f, #p3f, #p4f {
@@ -91,20 +126,6 @@ text-align: center;
 
 li{
     vertical-align: middle;
-}
-@media (orientation: landscape) {
-   li{font-size: 2vw;}
-	 span.glyphicon-menu-right{font-size: 5vw;}
-}
-
-@media (orientation: portrait) {
-    li{font-size: 2vh;}
-		span.glyphicon-menu-right{font-size: 5vh;}
-}
-
-#p1f, #p2f, #p3f, #p4f {
-    padding: 0px;
-    display: none;
 }
 
 #p2af {
@@ -121,4 +142,23 @@ li{
     height: 50px;
     text-align: right;
     border: solid 1px #c3c3c3;
+}
+label{
+    font-size: 125%;
+}
+
+/* centered columns styles */
+.row-centered {
+    text-align:center;
+}
+.col-centered {
+    display:inline-block;
+    
+    /* inline-block space fix */
+    margin: 0 auto;
+}
+@media only screen and (max-width: 472px) {
+    .col-centered {
+        float:none !important;
+    }
 }

@@ -3,26 +3,12 @@ window.addEventListener('resize', vAlign);
 
 
 $(document).ready(function () {
-    var now = new Date();
-    var hours = now.getHours();
-    console.log("Hours = " + hours);
-    var msg;
-    if (hours < 12) msg = "Good Morning";
-    else if (hours < 18) msg = "Good Afternoon";
-    else msg = "Good Evening";
-    console.log("msg = " + msg);
-    $(".greeting").text(function () {
-        return $(this).text().replace("Good Morning", msg);
-    });
-    //$('.greeting').text(msg);
-});
-
-$(document).ready(function () {
     $("#cust-image").click(function () {
-        $("#panel").hide();
+        $("#welcome").hide();
+        $("#ibody").css('background-image', 'none');
         $("#footer").hide();
-        $("#p1f").hide();
-        $("#products").slideDown(1000);
+        $("#p1-values").hide();
+        $("#painpoints-wrapper").fadeIn(1000);
         vAlign.call();
         $("#footer").slideDown(1000);
         //$('#img1A').slideDown("slow");
@@ -33,9 +19,9 @@ $(document).ready(function () {
 // Display Product 1 Benefits
 $(document).ready(function () {
     $("#pp1img").click(function () {
-        $("#products").hide();
+        $("#painpoints-wrapper").hide();
         $("#footer").hide();
-        $("#p1f").fadeIn(1000);
+        $("#p1-values").fadeIn(1000);
         $("#footer").fadeIn(1000);
     });
 });
@@ -43,7 +29,7 @@ $(document).ready(function () {
 // Display Product 2 Benefits
 $(document).ready(function () {
     $("#pp2img").click(function () {
-        $("#products").hide();
+        $("#painpoints").hide();
         $("#footer").hide();
         $("#p2f").fadeIn(1000);
         $("#footer").fadeIn(1000);
@@ -52,15 +38,15 @@ $(document).ready(function () {
 
 $(document).ready(function () {
     $("#img1B").click(function () {
-        $("#p1f").hide();
-        $("#products").slideDown("slow");
+        $("#p1-values").hide();
+        $("#painpoints").slideDown("slow");
     });
 });
 
 
 $(document).ready(function () {
-    $("#imgright").click(function () {
-        $("#p1f").hide();
+    $("#p1-values-next").click(function () {
+        $("#p1-values").hide();
         $("#p2f").slideDown("slow");
     });
 });
@@ -82,7 +68,7 @@ $(document).ready(function () {
 $(document).ready(function () {
     $("#img1C").click(function () {
         $("#p2f").hide();
-        $("#products").slideDown("slow");
+        $("#painpoints").slideDown("slow");
     });
 });
 
@@ -96,14 +82,14 @@ $(document).ready(function () {
 $(document).ready(function () {
     $("#img1D").click(function () {
         $("#p3f").hide();
-        $("#products").slideDown("slow");
+        $("#painpoints").slideDown("slow");
     });
 });
 
 $(document).ready(function () {
     $("#img1E").click(function () {
         $("#p4f").hide();
-        $("#products").slideDown("slow");
+        $("#painpoints").slideDown("slow");
     });
 });
 

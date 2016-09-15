@@ -11,26 +11,26 @@ function getUrlVars() {
 }
 // VERTICALLY ALIGN FUNCTION
 function vAlign() {
-    var ah = $("#outside").height();
+    var ah = $("#pp-rows").height();
     var ph = window.innerHeight;
     var mh = Math.ceil((ph - ah) / 4);
-    $("#outside").css('margin-top', mh);
+    $("#pp-rows").css('margin-top', mh);
 
     //ah = $(".row-2").height();
     //ph = $(".row-2").parent().height();
     mh = Math.ceil((mh) / 2);
     $(".row-2").css('margin-top', mh);
 
-    ah = $("#wrapper").height();
+    ah = $("#p1-values-wrapper").height();
     ph = window.innerHeight;
     mh = Math.ceil((ph - ah) / 5.5);
-    $("#wrapper").css('margin-top', mh);
+    $("#p1-values-wrapper").css('margin-top', mh);
 };
 $(document).ready(function () {
     var vspid = getUrlVars()["SpidId"];
     var spidBasicResults;
     vspid = 1;
-    /* PANEL SCREEN BEGIN */
+/* WELCOME SCREEN BEGIN
     //console.log("vspid = " + vspid);
    var result = $.ajax({
         type: "POST",
@@ -45,28 +45,19 @@ $(document).ready(function () {
           console.log(response);
           console.log(spidBasicResults);
           $("#cust-image").attr('src', 'Images/' + spidBasicResults[0].cu_logo);
-          document.getElementById("greeting").innerHTML = getGreeting() + " " + spidBasicResults[0].cc_name;
+          document.getElementById("welcome-greeting").innerHTML = getGreeting() + " " + spidBasicResults[0].cc_name;
         },
         error: function (a, b, c) {
             console.log("GetSpidBasic Error");
             console.log(a.responseText);
         }
    });
-   /* PANEL SCREEN END */
+*/
+   /* WELCOME SCREEN END */
 
-function getGreeting() {
-   var now = new Date();
-   var hours = now.getHours();
-   console.log("Hours = " + hours);
-   var msg;
-   if (hours < 12) msg = "Good Morning";
-   else if (hours < 18) msg = "Good Afternoon";
-   else msg = "Good Evening";
-   console.log("Greeting = " + msg);
-   return msg;
-}
+
 /*
-getCount (function(spid, type){
+function getCount (spid, type){
   console.log("Get Counts called");
   $.ajax({
         type: "POST",
@@ -79,7 +70,7 @@ getCount (function(spid, type){
         success: function (response) {
           var productValues = eval(response.d);
           var count = productValues[0].recordCount;
-          //console.log("record count = " + count);
+          console.log("record count = " + count);
           return count
         },
         error: function (a, b, c) {
@@ -88,10 +79,12 @@ getCount (function(spid, type){
             return '-1'
         }
   });
-});
+};
 */
+
     /* PAINPOINTS BEGIN */
-    var ppCount = 0;
+/*
+    var ppCount;
     var vspid = getUrlVars()["SpidId"];
     var spmap = getUrlVars()["SmapId"];
     vspid = 1;
@@ -108,7 +101,7 @@ getCount (function(spid, type){
           var productValues = eval(response.d);
           console.log(productValues[0]);
 
-          ppCount = getCount(1, 'blah');
+          //ppCount = getCount(1, 'blah');
           console.log("Number of products: " + ppCount);
           //console.log("pp-spmap-id: " + productValues[3].spMapId);
 
@@ -122,21 +115,21 @@ getCount (function(spid, type){
           var pp3Values = new Array(4);
           var pp4Values = new Array(4);
 
-          for (var i=0; i<ppCount; i++){
-            if (productValues[i].spMapId == 1){
+          for (var i=0; i<4; i++){
+              if (productValues[i].spmap == 1) {
               ppImages[0] = productValues[i].painPointImage;
-              //console.log("ppImages0: " + ppImages[0]);
+              console.log("ppImages0: " + ppImages[0]);
               ppCaptions[0] = productValues[i].painPoint;
             }
-            else if (productValues[i].spMapId == 2){
+              else if (productValues[i].spmap == 2) {
               ppImages[1] = productValues[i].painPointImage;
               ppCaptions[1] = productValues[i].painPoint;
             }
-            else if (productValues[i].spMapId == 3){
+              else if (productValues[i].spmap == 3) {
               ppImages[2] = productValues[i].painPointImage;
               ppCaptions[2] = productValues[i].painPoint;
             }
-            else if (productValues[i].spMapId == 4){
+              else if (productValues[i].spmap == 4) {
               ppImages[3] = productValues[i].painPointImage;
               console.log("ppImages3: " + ppImages[3]);
               ppCaptions[3] = productValues[i].painPoint;
@@ -158,10 +151,7 @@ getCount (function(spid, type){
           }
           var valueImages = new Array(4);
           var vp = new Array(4);
-          /*for (var i=0; i<productCount; i++) {
-              valueImages[i] = productValues[i].PainPointImage;
-              vp[i] = productValues[i].Value;
-          };*/
+
           $("#pp1img").attr('src', 'images/' + ppImages[0]);
           document.getElementById("pp1cap").innerHTML = ppCaptions[0];
 
@@ -182,7 +172,8 @@ getCount (function(spid, type){
             console.log("GetSpidProductValues Error");
             console.log(a.responseText);
         }
-    });
+});
+*/
     /* PAINPOINTS END */
 
     /* Painpoint 1 Value START 

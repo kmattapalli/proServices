@@ -1,0 +1,41 @@
+﻿        <!-- PAINPOINTS BEGIN -->
+<div id="painpoints-wrapper" class="container-fluid products" ng-controller="painpointsCtrl">
+    <h4 class="left-align" id="pp-title">{{ppTitle}}</h4>
+    <div id="pp-rows" class="well">
+        <div id="pp-row-1" class="row row-centered" ng-repeat="i in getRows(numRows) track by $index">
+            <div id="pp1" class="col m6 col-centered" ng-repeat="x in painpoints[$index]">
+                <a href="#/p{{x.ppId}}-values">
+                    <img id="pp1img" class="responsive-img" ng-src="{{x.ppImg}}" /><br />
+                    <label for="pp1img">{{x.ppLabel}}</label>
+                </a>
+            </div>
+         </div>
+    <!--
+            <div id="pp2" class="col m6 col-centered">
+                <a href="#/p2-values">
+                    <img id="pp2img" class="responsive-img" ng-src="{{pp2Img}}" /><br />
+                    <label for="pp2img">{{pp2Label}}</label>
+                </a>
+            </div>
+        </div>
+        <div id="pp-row-2" class="row row-centered">
+            <div id="pp3" class="col m6 col-centered">
+                <a href="#/p3-values">
+                    <img id="pp3img" class="responsive-img" ng-src="{{pp3Img}}" /><br />
+                    <label for="pp3img">{{pp3Label}}</label>
+                </a>
+            </div>
+            <div id="pp4" class="col m6 col-centered">
+                <a href="#/p4-values">
+                    <img id="pp4img" class="responsive-img" ng-src="{{pp4Img}}" /><br />
+                    <label for="pp4img">{{pp4Label}}</label>
+                </a>
+                <div ng-repeat="i in getRows(numRows) track by $index">
+                    <p ng-repeat="x in painpoints[$index]">{{x.ppImg}} - {{x.ppLabel}}</p>
+                </div>
+            </div>
+        </div>
+    -->
+    </div>
+</div>
+<!-- PAINPOINTS END -->
