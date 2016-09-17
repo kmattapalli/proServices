@@ -44,6 +44,18 @@ app.config(['$routeProvider', function ($routeProvider) {
             templateUrl: '/pages/Affirm.html',
             controller: 'p1Ctrl'
         })
+        .when('/p1-yes', {
+            templateUrl: '/pages/Yes.html',
+            controller: 'p1Ctrl'
+        })
+        .when('/p1-more', {
+            templateUrl: '/pages/MoreInfo.html',
+            controller: 'p1Ctrl'
+        })
+        .when('/p1-no', {
+            templateUrl: '/pages/No.html',
+            controller: 'p1Ctrl'
+        })
         .when('/p2-values', {
             templateUrl: '/pages/Values.html',
             controller: 'p2Ctrl'
@@ -73,37 +85,117 @@ app.config(['$routeProvider', function ($routeProvider) {
             controller: 'p2Ctrl'
         })
 
+
   .otherwise({
       redirectTo: '/'
   });
 }]);
 
-app.factory('Data', function () {
-
+app.service('ServiceCall', function ($http) {
+    var spid = 1;
     var data = {
+        Play: { clientContact: '', clientName: '', title: '' },
+        Pain1: { painPoint: '', painPointImage: '', product: '', productImage: '', productInStock: '' },
+        Pain2: { painPoint: '', painPointImage: '', product: '', productImage: '', productInStock: '' },
+        Pain3: { painPoint: '', painPointImage: '', product: '', productImage: '', productInStock: '' },
+        Pain4: { painPoint: '', painPointImage: '', product: '', productImage: '', productInStock: '' },
         Name: '',
         Product1: '',
-        PP1: ''
+        PP1: '',
+        P1Img: ''
     };
+    this.getData = function (spid) {
+        var url = "http://mala-ws.azurewebsites.net/selloCityWeb/customer/getsalesplay/" + spid;
+        return $http.get(url);
+    }
+    this.setData = function(result){
+        console.log("Result: " + result);
+        data.Play.clientContact = result.data.clientContactName;
+        data.Play.clientName = result.data.clientName;
+
+    };
+    this.getPlay = function () {
+        return data.Play;
+    }
+    this.getPain1 = function () {
+        return data.Pain1;
+    }
+    this.getPain2 = function () {
+        return data.Pain1;
+    }
+    this.getPain3 = function () {
+        return data.Pain1;
+    }
+    this.getPain4 = function () {
+        return data.Pain1;
+    }
+});
+
+app.factory('factory', function ($http) {
+    /*register the interceptor as a service
+    $provide.factory('myHttpInterceptor', function ($q) {
+        return {
+            'responseError': function (rejection) {
+                if (rejection.status == 0) {
+                    location.reload();
+                }
+                return $q.reject(rejection);
+            }
+        };
+    });
+
+    $provide.factory('myHttpInterceptor', function ($q) {
+        return function (promise) {
+            return promise.then(function (success) {
+                return success;
+            }, function (rejection) {
+                if (rejection.status == 0) {
+                    location.reload();
+                }
+                return $q.reject(rejection);
+            });
+        };
+    });
+
+    $httpProvider.interceptors.push('myHttpInterceptor');
+    */
+    var spid = 1;
+    
+    var myfunction = function($scope, ServiceCall) {
+        var myDataPromise = getData();
+        myDataPromise.then(function (result) {
+            
+            // this is only run after getData() resolves
+            $scope.data = result;
+            // Set data values
+            data.Play.clientContact = $scope.data.clientContactName;
+            console.log("data.name" + data.Play.clientContact);
+        });
+    }
 
     return {
-        getName: function () { return data.Name; },
+        getPlay: function () { return data.Play; },
         setName: function (Name) { data.Name = Name; },
 
         getProduct1: function () { return data.Product1; },
         setProduct1: function (Product1) { data.Product1 = Product1; },
 
         getPP1: function () { return data.PP1; },
-        setPP1: function (PP1) { data.PP1 = PP1 }
+        setPP1: function (PP1) { data.PP1 = PP1; },
+
+        getP1Img: function () { return data.P1Img; },
+        setP1Img: function (P1Img) { data.P1Img = P1Img; }
     };
 });
-app.controller('p1Ctrl', function ($scope, Data) {
+
+app.controller('p1Ctrl', function ($scope, ServiceCall) {
+    
     //console.log("P1 Values called");
 
     // Utility function for this scope.
     // VERTICALLY ALIGN FUNCTION
     function vAlign(id, div) {
-        console.log("vAlign in P1 with id: " + id + ", div: " + div);
+        //console.log("vAlign in P1 with id: " + id + ", div: " + div);
         var ah = $(id).height();
         var ph = window.innerHeight;
         var mh = Math.ceil((ph - ah) / div);
@@ -114,9 +206,9 @@ app.controller('p1Ctrl', function ($scope, Data) {
     $scope.ppId = 1;
 
     // Basic Info
-    $scope.custName = Data.getName();
-    Data.setProduct1("Vaio-Z");
-    $scope.prod1 = Data.getProduct1();
+    //$scope.custName = Data.getName();
+    //Data.setProduct1("Vaio-Z");
+    //$scope.prod1 = Data.getProduct1();
 
     // P1 Values
     $scope.valuesTitle = "Vaio's perspective of GPU Boost";
@@ -197,7 +289,9 @@ app.controller('p1Ctrl', function ($scope, Data) {
 
     // P1 Affirmation screen
     $scope.affirmTitle = "Affirm";
-    $scope.pp1 = Data.getPP1();
+    //$scope.pp1 = Data.getPP1();
+    //$scope.p1Img = Data.getP1Img();
+    $scope.p1Stock = "In Stock";
 });
 
 app.controller('p2Ctrl', function ($scope) {
@@ -293,13 +387,15 @@ app.controller('p2Ctrl', function ($scope) {
     vAlign("#p1-faqs-wrapper", 4);
 });
 
-app.controller('painpointsCtrl', function ($scope, Data) {
+app.controller('painpointsCtrl', function ($scope, ServiceCall) {
+    console.log("ClientName = " + ServiceCall.getPlay().clientContact)
     $("#ibody").removeClass("bgImg");
 
     $scope.ppTitle = "What are your pain points?";
-    Data.setPP1("GPU Boost");
+    //Data.setPP1("GPU Boost");
+    //Data.setP1Img("Images/p1.jpg");
     
-    $scope.painpoints = [[{ ppId: 1, ppImg: "Images/PP1.jpg", ppLabel: Data.getPP1() },
+    $scope.painpoints = [[{ ppId: 1, ppImg: "Images/PP1.jpg", ppLabel: "GPU" },
                           { ppId: 2, ppImg: "Images/PP2.jpg", ppLabel: "RAM Speeds" }],
                          [{ ppId: 3, ppImg: "Images/PP3.jpg", ppLabel: "4K Rendering" },
                           { ppId: 4, ppImg: "Images/PP4.jpg", ppLabel: "Anything else?" }]];
@@ -326,25 +422,25 @@ app.controller('footerCtrl', function ($scope) {
     $scope.custImg = "images/Customer.jpg";
 });
 
-app.service('ServiceCall', function ($http) {
-    this.getSalesPlay = function(spid) {
-        var url = "http://mala-ws.azurewebsites.net/selloCityWeb/customer/getsalesplay/" + spid;
-        return $http.get(url);
-    }
-});
 
-app.controller('welcomeCtrl', function (ServiceCall, $scope, Data) {
+
+app.controller('welcomeCtrl', function (ServiceCall, $scope) {
     $("#ibody").addClass("bgImg");
-    var spid = 10;
+    var spid = 1;
     $scope.r = {};
-    ServiceCall.getSalesPlay(spid).then(function (d) {
+    /*ServiceCall.getSalesPlay(spid).then(function (d) {
         $scope.r = d.data;
         console.log(d.data);      //This is printing Object {spid: 10, clientContactDesignation: null, clientContactEmail: "ravi@test.com", clientContactName: "Ravi", clientName: null…}  
         $scope.custName = d.data.clientContactName;
         Data.setName($scope.custName);
-    });
+    });*/
 
-    console.log("data: " + $scope.r);       //but this is printing data: undefined
+    //$scope.custName = Data.getName();
+    ServiceCall.getData(1).then(function (result) {
+        $scope.custName = result.data.clientContactName;
+        ServiceCall.setData(result);
+    });
+    console.log("Hi");       //but this is printing data: undefined
     $scope.greeting = getGreeting();
     //$scope.firstName = "Saket";
     $scope.lastName = "Ati";

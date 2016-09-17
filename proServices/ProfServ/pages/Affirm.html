@@ -1,0 +1,31 @@
+﻿        <!-- PRODUCT 1 VALUES BEGIN -->
+<div id="p1-awards" border="0">
+    <!--<h2 alingn="center"><img id="p1i1" src="images\p1_features.jpg" /></h2>-->
+    <h4 id="p1-awards-title" align="center">{{affirmTitle}}</h4>
+
+    <div id="affirm-content">
+        <div id="awards-row-1" class="row row-centered">
+            <div id="pp1" class="col m10 offset-m2 left-align">
+                <h4>Dear {{custName}}, is {{prod1}} something that will help you with your {{pp1}} issues?</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col m2 offset-m5">
+                <h5><a href="#/p{{ppId}}-yes">Yes</a></h5>
+            </div>
+            <div class="col m3">
+                <h5><a href="#/p{{ppId}}-more">More Info</a></h5>
+            </div>
+            <div class="col m2">
+                <h5><a href="#/p{{ppId}}-no">No</a></h5>
+            </div>
+        </div>
+        <div class="row row-centered">
+            <div class="col m3 offset-m6">
+                <img id="p1img" class="responsive-img" ng-src="{{p1Img}}" /><br />
+                <label class="" for="p1img">{{p1Stock}}</label>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- PRODUCT 1 VALUES END -->
