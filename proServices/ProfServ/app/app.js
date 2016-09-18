@@ -92,42 +92,89 @@ app.config(['$routeProvider', function ($routeProvider) {
 }]);
 
 app.service('ServiceCall', function ($http) {
-    var spid = 1;
     var data = {
         Play: { clientContact: '', clientName: '', title: '' },
-        Pain1: { painPoint: '', painPointImage: '', product: '', productImage: '', productInStock: '' },
-        Pain2: { painPoint: '', painPointImage: '', product: '', productImage: '', productInStock: '' },
-        Pain3: { painPoint: '', painPointImage: '', product: '', productImage: '', productInStock: '' },
-        Pain4: { painPoint: '', painPointImage: '', product: '', productImage: '', productInStock: '' },
-        Name: '',
-        Product1: '',
-        PP1: '',
-        P1Img: ''
+        AllPains: [],
+        AllValues: [],
     };
-    this.getData = function (spid) {
-        var url = "http://mala-ws.azurewebsites.net/selloCityWeb/customer/getsalesplay/" + spid;
+    this.getBasic = function (spid) {
+        console.log("Get Data");
+        var url = "http://scityws.azurewebsites.net/service/GetSpidInfo/" + spid;
         return $http.get(url);
     }
-    this.setData = function(result){
-        console.log("Result: " + result);
-        data.Play.clientContact = result.data.clientContactName;
-        data.Play.clientName = result.data.clientName;
-
+    this.setBasic = function (result) {
+        console.log("Result" + result.data[0]);
+        data.Play.clientContact = result.data[0].CLIENT_CONTACT_NAME;
+        console.log("Clinet Name: " + data.Play.clientContact);
+        data.Play.clientName = result.data.CLIENT_NAME;
+        data.Play.title = result.data.TITLE;
     };
+    this.getSpidMappings = function (spid) {
+        console.log("Get Mappings");
+        var url = "http://scityws.azurewebsites.net/service/GetSpidMappings/" + spid;
+        $http.get(url).then(function (result) {
+            
+            angular.forEach(result.data, function (value, key) {
+                var Pain = { index: '', title:'', spmapId: '', painPoint: '', painPointImage: '', product: '', productImage: '', productInStock: '', values: [], benefits: [] };
+                Pain.index = key + 1;
+                Pain.title = value.TITLE;
+                Pain.spmapId = value.SPMAP_ID;
+                Pain.painPoint = value.PAIN_POINT;
+                Pain.painPointImage = "Images/" + value.PAIN_POINT_IMAGE;
+                Pain.product = value.PRODUCT_NAME;
+                Pain.productImage = "Images/" + value.PRODUCT_IMAGE;
+                Pain.productInStock = value.PRODUCT_IN_STOCK;
+               
+                var url = "http://scityws.azurewebsites.net/service/GetProductValues/" + Pain.spmapId;
+                $http.get(url).then(function (result) {
+                    var val = [];
+                    angular.forEach(result.data, function (value, key) {
+                        val.push(value.VALUE);
+                    });
+                    //console.log("Val for spmapID " + value.spmapId + " are: " + val);
+                    Pain.values = val;
+                });
+                var url = "http://scityws.azurewebsites.net/service/GetProductBenefits/" + Pain.spmapId;
+                $http.get(url).then(function (result) {
+                    var ben = [];
+                    angular.forEach(result.data, function (value, key) {
+                        ben.push(value.BENEFIT);
+                    });
+                    //console.log("Val for spmapID " + value.spmapId + " are: " + val);
+                    Pain.benefits = ben;
+                });
+
+                //console.log("Pain: " + JSON.stringify(Pain, null, 4));
+                data.AllPains.push(Pain);
+            });
+        });
+    }
+    this.getAllValues = function () {
+        angular.forEach(data.AllPains, function (value, key) {
+            var val = [];
+            //console.log(key + ":" + value.spmapId + ", " + value.painPoint);
+            
+        });
+        
+    }
     this.getPlay = function () {
         return data.Play;
     }
     this.getPain1 = function () {
-        return data.Pain1;
+        if (data.AllPains[0] != '') return data.AllPains[0];
+        else return null;
     }
     this.getPain2 = function () {
-        return data.Pain1;
+        if (data.AllPains[1] != '') return data.AllPains[1];
+        else return null;
     }
     this.getPain3 = function () {
-        return data.Pain1;
+        if (data.AllPains[2] != '') return data.AllPains[2];
+        else return null;
     }
     this.getPain4 = function () {
-        return data.Pain1;
+        if (data.AllPains[3] != '') return data.AllPains[3];
+        else return null;
     }
 });
 
@@ -189,7 +236,10 @@ app.factory('factory', function ($http) {
 });
 
 app.controller('p1Ctrl', function ($scope, ServiceCall) {
-    
+    $scope.Play = ServiceCall.getPlay();
+    $scope.Pain = ServiceCall.getPain1();
+    //console.log("Custname: " + $scope.Play.clientContact);
+
     //console.log("P1 Values called");
 
     // Utility function for this scope.
@@ -212,12 +262,14 @@ app.controller('p1Ctrl', function ($scope, ServiceCall) {
 
     // P1 Values
     $scope.valuesTitle = "Vaio's perspective of GPU Boost";
-    $scope.values = [
+    $scope.values = $scope.Pain.values;
+    //console.log("P1 Ctrl Values: " + $scope.values);
+    /*$scope.values = [
         "Industry highest frames per second",
         "Hardware agnostic code",
         "Global memory coalscing",
         "Lowest wattage per performance"
-    ];
+    ];*/
         
     vAlign("#p1-values-wrapper", 4);
     //$("#pp1-img").css("width", (($("#pp1-img-parent").width()) + "px"));
@@ -236,13 +288,16 @@ app.controller('p1Ctrl', function ($scope, ServiceCall) {
 
     // P1 Benefits
     $scope.benefitsTitle = "Vaio Z Benefits";
-    $scope.benefits = [
+    $scope.benefits = $scope.Pain.values;
+    //console.log("P1 Ctrl Benefits: " + $scope.benefits);
+/*    $scope.benefits = [
         "Lowest cost per wattage",
         "CPU independent acceleration",
         "Fastest memory reads in the industry",
         "Award winning cooling algorithms",
         "Test"
-    ];    
+    ]; 
+*/
     vAlign("#p1-benefits-wrapper", 4);
 
     //P1 Claims
@@ -294,13 +349,15 @@ app.controller('p1Ctrl', function ($scope, ServiceCall) {
     $scope.p1Stock = "In Stock";
 });
 
-app.controller('p2Ctrl', function ($scope) {
+app.controller('p2Ctrl', function ($scope, ServiceCall) {
+    $scope.Play = ServiceCall.getPlay();
+    $scope.Pain = ServiceCall.getPain2();
     //console.log("P2 Values called");
 
     // Utility function for this scope.
     // VERTICALLY ALIGN FUNCTION
     function vAlign(id, div) {
-        console.log("vAlign in P1 with id: " + id + ", div: " + div);
+        //console.log("vAlign in P1 with id: " + id + ", div: " + div);
         var ah = $(id).height();
         var ph = window.innerHeight;
         var mh = Math.ceil((ph - ah) / div);
@@ -312,12 +369,14 @@ app.controller('p2Ctrl', function ($scope) {
 
     // P2 Values
     $scope.valuesTitle = "Vaio's perspective of GPU Boost2";
-    $scope.values = [
+    $scope.values = $scope.Pain.values;
+    //console.log("P2 Ctrl Values: " + $scope.values);
+  /*  $scope.values = [
         "Industry highest frames per second2",
         "Hardware agnostic code2",
         "Global memory coalscing2",
         "Lowest wattage per performance2"
-    ];
+    ];*/
 
     vAlign("#p1-values-wrapper", 4);
     //$("#pp1-img").css("width", (($("#pp1-img-parent").width()) + "px"));
@@ -335,14 +394,17 @@ app.controller('p2Ctrl', function ($scope) {
 
     // P2 Benefits
     $scope.benefitsTitle = "Vaio Z Benefits2";
-    $scope.benefits = [
+    $scope.benefits = $scope.Pain.benefits;
+    //console.log("P2 Ctrl Benefits: " + $scope.benefits);
+/*    $scope.benefits = [
         "Lowest cost per wattage2",
         "CPU independent acceleration2",
         "Fastest memory reads in the industry2",
         "Award winning cooling algorithms2",
         "Test"
     ];
-    vAlign("#p1-benefits-wrapper", 4);
+ */
+  vAlign("#p1-benefits-wrapper", 4);
 
     //P2 Claims
     $scope.claimsTitle = "Claims2";
@@ -388,10 +450,17 @@ app.controller('p2Ctrl', function ($scope) {
 });
 
 app.controller('painpointsCtrl', function ($scope, ServiceCall) {
-    console.log("ClientName = " + ServiceCall.getPlay().clientContact)
+    //console.log("ClientName = " + ServiceCall.getPlay().clientContact)
+    ServiceCall.getAllValues();
     $("#ibody").removeClass("bgImg");
 
-    $scope.ppTitle = "What are your pain points?";
+    $scope.ppTitle = ServiceCall.getPlay().title;
+    $scope.Pain1 = ServiceCall.getPain1();
+    $scope.Pain2 = ServiceCall.getPain2();
+    $scope.Pain3 = ServiceCall.getPain3();
+    $scope.Pain4 = ServiceCall.getPain4();
+    //console.log("PP1 Label: " + $scope.Pain1.painPoint);
+    //console.log("Values for spmap " + $scope.Pain1.spmapId + " are: " + $scope.Pain1.values);
     //Data.setPP1("GPU Boost");
     //Data.setP1Img("Images/p1.jpg");
     
@@ -427,20 +496,16 @@ app.controller('footerCtrl', function ($scope) {
 app.controller('welcomeCtrl', function (ServiceCall, $scope) {
     $("#ibody").addClass("bgImg");
     var spid = 1;
-    $scope.r = {};
-    /*ServiceCall.getSalesPlay(spid).then(function (d) {
-        $scope.r = d.data;
-        console.log(d.data);      //This is printing Object {spid: 10, clientContactDesignation: null, clientContactEmail: "ravi@test.com", clientContactName: "Ravi", clientName: null…}  
-        $scope.custName = d.data.clientContactName;
-        Data.setName($scope.custName);
-    });*/
 
     //$scope.custName = Data.getName();
-    ServiceCall.getData(1).then(function (result) {
-        $scope.custName = result.data.clientContactName;
-        ServiceCall.setData(result);
+    ServiceCall.getBasic(spid).then(function (result) {
+        $scope.custName = result.data[0].CLIENT_CONTACT_NAME;
+        ServiceCall.setBasic(result);
     });
-    console.log("Hi");       //but this is printing data: undefined
+    ServiceCall.getSpidMappings(spid);
+    
+
+    //console.log("Hi");       //but this is printing data: undefined
     $scope.greeting = getGreeting();
     //$scope.firstName = "Saket";
     $scope.lastName = "Ati";

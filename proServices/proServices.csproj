@@ -97,61 +97,61 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="app\app.js" />
-    <Content Include="images\Award1.JPG" />
-    <Content Include="images\Award2.JPG" />
-    <Content Include="images\Award3.JPG" />
-    <Content Include="images\cellphone_icon.png" />
-    <Content Include="images\Claim1.JPG" />
-    <Content Include="images\Claim2.JPG" />
-    <Content Include="images\Client.jpg" />
-    <Content Include="images\comp.JPG" />
-    <Content Include="images\Customer.jpg" />
-    <Content Include="images\DefaultBackground.jpg" />
-    <Content Include="images\email_icon.png" />
-    <Content Include="images\exit.jpg" />
-    <Content Include="images\FAQ_icon.png" />
-    <Content Include="images\minimize.jpg" />
-    <Content Include="images\next_arrow_icon.png" />
-    <Content Include="images\p1.JPG" />
-    <Content Include="images\pain_to_prod_connector.png" />
-    <Content Include="images\PP4.jpg" />
-    <Content Include="images\PowerOff.jpg" />
-    <Content Include="images\PP1.JPG" />
-    <Content Include="images\PP2.jpg" />
-    <Content Include="images\PP3.jpg" />
-    <Content Include="images\qa.JPG" />
-    <Content Include="images\right.png" />
-    <Content Include="images\SalesPerson.jpg" />
-    <Content Include="images\send_text_icon.png" />
-    <Content Include="images\share_button.png" />
-    <Content Include="images\somethingelse_icon.png" />
-    <Content Include="images\star_bullet_botton.png" />
-    <Content Include="images\star_bullet_botton_blk.png" />
-    <Content Include="images\star_with_tick_icon.png" />
-    <Content Include="images\submit_button.png" />
-    <Content Include="images\v.JPG" />
+    <Content Include="ProfServ\app\app.js" />
+    <Content Include="ProfServ\images\Award1.JPG" />
+    <Content Include="ProfServ\images\Award2.JPG" />
+    <Content Include="ProfServ\images\Award3.JPG" />
+    <Content Include="ProfServ\images\cellphone_icon.png" />
+    <Content Include="ProfServ\images\Claim1.JPG" />
+    <Content Include="ProfServ\images\Claim2.JPG" />
+    <Content Include="ProfServ\images\Client.jpg" />
+    <Content Include="ProfServ\images\comp.JPG" />
+    <Content Include="ProfServ\images\Customer.jpg" />
+    <Content Include="ProfServ\images\DefaultBackground.jpg" />
+    <Content Include="ProfServ\images\email_icon.png" />
+    <Content Include="ProfServ\images\exit.jpg" />
+    <Content Include="ProfServ\images\FAQ_icon.png" />
+    <Content Include="ProfServ\images\minimize.jpg" />
+    <Content Include="ProfServ\images\next_arrow_icon.png" />
+    <Content Include="ProfServ\images\p1.JPG" />
+    <Content Include="ProfServ\images\pain_to_prod_connector.png" />
+    <Content Include="ProfServ\images\p4.jpg" />
+    <Content Include="ProfServ\images\PowerOff.jpg" />
+    <Content Include="ProfServ\images\PP1.JPG" />
+    <Content Include="ProfServ\images\PP2.jpg" />
+    <Content Include="ProfServ\images\PP3.jpg" />
+    <Content Include="ProfServ\images\qa.JPG" />
+    <Content Include="ProfServ\images\right.png" />
+    <Content Include="ProfServ\images\SalesPerson.jpg" />
+    <Content Include="ProfServ\images\send_text_icon.png" />
+    <Content Include="ProfServ\images\share_button.png" />
+    <Content Include="ProfServ\images\somethingelse_icon.png" />
+    <Content Include="ProfServ\images\star_bullet_botton.png" />
+    <Content Include="ProfServ\images\star_bullet_botton_blk.png" />
+    <Content Include="ProfServ\images\star_with_tick_icon.png" />
+    <Content Include="ProfServ\images\submit_button.png" />
+    <Content Include="ProfServ\images\v.JPG" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="pages\Affirm.html" />
-    <Content Include="pages\modalContent.html" />
-    <Content Include="pages\Awards.html" />
-    <Content Include="pages\Benefits.html" />
-    <Content Include="pages\Claims.html" />
-    <Content Include="pages\Competitive.html" />
-    <Content Include="pages\Faqs.html" />
-    <Content Include="pages\MoreInfo.html" />
-    <Content Include="pages\No.html" />
-    <Content Include="pages\Specs.html" />
-    <Content Include="pages\Testimonials.html" />
-    <Content Include="pages\Values.html" />
-    <Content Include="pages\painpoints.html" />
-    <Content Include="pages\welcome.html" />
-    <Content Include="pages\Yes.html" />
+    <Content Include="ProfServ\pages\Affirm.html" />
+    <Content Include="ProfServ\pages\modalContent.html" />
+    <Content Include="ProfServ\pages\Awards.html" />
+    <Content Include="ProfServ\pages\Benefits.html" />
+    <Content Include="ProfServ\pages\Claims.html" />
+    <Content Include="ProfServ\pages\Competitive.html" />
+    <Content Include="ProfServ\pages\Faqs.html" />
+    <Content Include="ProfServ\pages\MoreInfo.html" />
+    <Content Include="ProfServ\pages\No.html" />
+    <Content Include="ProfServ\pages\Specs.html" />
+    <Content Include="ProfServ\pages\Testimonials.html" />
+    <Content Include="ProfServ\pages\Values.html" />
+    <Content Include="ProfServ\pages\painpoints.html" />
+    <Content Include="ProfServ\pages\welcome.html" />
+    <Content Include="ProfServ\pages\Yes.html" />
     <Content Include="Service References\Application Insights\ConnectedService.json" />
-    <Content Include="images\desktop.ini" />
+    <Content Include="ProfServ\images\desktop.ini" />
     <None Include="Properties\PublishProfiles\SCityWS - Web Deploy.pubxml" />
     <Content Include="Service References\SpidInfo\proServices.SpidInfo.GetSpidBasicResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -180,12 +180,12 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="css\styles.css" />
-    <Content Include="index.html" />
-    <Content Include="scripts\ai.0.22.19-build00125.js" />
-    <Content Include="scripts\ai.0.22.19-build00125.min.js" />
-    <Content Include="scripts\ajax.js" />
-    <Content Include="scripts\script.js" />
+    <Content Include="ProfServ\css\styles.css" />
+    <Content Include="ProfServ\salesplay.html" />
+    <Content Include="ProfServ\scripts\ai.0.22.19-build00125.js" />
+    <Content Include="ProfServ\scripts\ai.0.22.19-build00125.min.js" />
+    <Content Include="ProfServ\scripts\ajax.js" />
+    <Content Include="ProfServ\scripts\script.js" />
     <None Include="Service References\SpidInfo\SpidInfo.disco" />
     <None Include="Service References\SpidInfo\configuration91.svcinfo" />
     <None Include="Service References\SpidInfo\configuration.svcinfo" />
@@ -193,7 +193,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <Content Include="services\BasicService.js" />
     <Content Include="SPID.aspx" />
     <Content Include="SpidInfo.asmx" />
     <Content Include="Web.config">
