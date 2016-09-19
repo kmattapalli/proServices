@@ -1,25 +1,25 @@
 ﻿  <!-- PRODUCT 1 SPECS AND MANUALS BEGIN -->
-<div id="p1-specs" border="0">
+<div id="p{{Pain.index}}-specs" border="0">
     <!--<h2 alingn="center"><img id="p1i1" src="images\p1_features.jpg" /></h2>-->
-    <h4 id="p1-specs-title" align="center">{{specsTitle}}</h4>
+    <h4 id="specs-title" align="center">{{specsTitle}}</h4>
 
-    <div class="row margin-top valign-wrapper">
+    <div id="specs-wrapper" class="row margin-top valign-wrapper" ng-init="vAlign('#specs-wrapper', '4')">
         <div class="col s12 m5">
             <div class="card blue-grey darken-1">
                 <div class="card-action center-align">
-                    <a target="_blank" ng-href="{{specsUrl}}" ng-mousedown="openTab1()" >Complete Vaio Z Specs</a>
+                    <a target="_blank" ng-href="{{Pain.specsUrl}}" ng-mousedown="openTab1()" >Complete Vaio Z Specs</a>
                 </div>
             </div>
         </div>
         <div class="col s12 m5">
             <div class="card blue-grey darken-1">
                 <div class="card-action center-align">
-                    <a target="_blank" ng-href="{{manualUrl}}" ng-mousedown="openTab2()">Vaio Z Product Manuals</a>
+                    <a target="_blank" ng-href="{{Pain.manualUrl}}" ng-mousedown="openTab2()">Vaio Z Product Manuals</a>
                 </div>
             </div>
         </div>
         <div class="col m2">
-            <a href="#/p{{ppId}}-benefits"><i class="material-icons icon-900">keyboard_arrow_right</i></a>
+            <a href="#/{{specsNext}}"><i class="material-icons icon-900">keyboard_arrow_right</i></a>
         </div>
     </div>
 </div>

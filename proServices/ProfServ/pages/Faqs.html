@@ -1,18 +1,18 @@
 ﻿        <!-- PRODUCT 1 BENEFITS BEGIN -->
-<div id="p1-faqs" border="0">
+<div id="p{{Pain.index}}-faqs" border="0">
     <!--<h2 alingn="center"><img id="p1i1" src="images\p1_features.jpg" /></h2>-->
-    <h4 id="p1-faqs-title" align="center">{{faqsTitle}}</h4>
+    <h4 id="faqs-title" align="center">{{faqsTitle}}</h4>
 
-    <div id="p1-faqs-wrapper" class="row vertical-align">
+    <div id="faqs-wrapper" class="row vertical-align" ng-init="vAlign('#faqs-wrapper', '4')">
         <div class="col m10">
-            <ul id="p1-values-list" class="collection">
-                <li ng-repeat="faq in faqs" class="collection-item">
+            <ul id="faqs-list" class="collection">
+                <li ng-repeat="faq in Pain.faqs track by $index" class="collection-item">
                     Q: {{faq.q}} <br /><br /> A: {{faq.a}}
                 </li>
             </ul>
         </div>
         <div class="col m2">
-            <a href="#/p{{ppId}}-affirm"><i class="material-icons icon-1000">keyboard_arrow_right</i></a>
+            <a href="#/{{faqsNext}}"><i class="material-icons icon-1000">keyboard_arrow_right</i></a>
         </div>
     </div>
 </div>

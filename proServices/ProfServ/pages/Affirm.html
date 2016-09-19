@@ -1,9 +1,9 @@
 ﻿        <!-- PRODUCT 1 VALUES BEGIN -->
-<div id="p1-awards" border="0">
+<div id="p{{Pain.index}}-awards" border="0">
     <!--<h2 alingn="center"><img id="p1i1" src="images\p1_features.jpg" /></h2>-->
     <h4 id="p1-awards-title" align="center">{{affirmTitle}}</h4>
 
-    <div id="affirm-content">
+    <div id="affirm-wrapper" ng-init="vAlign('#affirm-wrapper', '10')">
         <div id="awards-row-1" class="row row-centered">
             <div id="pp1" class="col m10 offset-m2 left-align">
                 <h4>Dear {{Play.clientContact}}, is {{Pain.product}} something that will help you with your {{Pain.painPoint}} issues?</h4>
@@ -11,19 +11,19 @@
         </div>
         <div class="row">
             <div class="col m2 offset-m5">
-                <h5><a href="#/p{{Pain.index}}-yes">Yes</a></h5>
+                <h5><a href="#/{{affirmYes}}">Yes</a></h5>
             </div>
             <div class="col m3">
-                <h5><a href="#/p{{Pain.index}}-more">More Info</a></h5>
+                <h5><a href="#/{{affirmMore}}">More Info</a></h5>
             </div>
             <div class="col m2">
-                <h5><a href="#/p{{Pain.index}}-no">No</a></h5>
+                <h5><a href="#/{{affirmNo}}">No</a></h5>
             </div>
         </div>
         <div class="row row-centered">
             <div class="col m3 offset-m6">
-                <img id="p1img" class="responsive-img" ng-src="{{p1Img}}" /><br />
-                <label class="" for="p1img">{{p1Stock}}</label>
+                <img id="p1img" class="responsive-img" ng-src="{{Pain.productImage}}" /><br />
+                <label class="" for="p1img">{{inStock}}</label>
             </div>
         </div>
     </div>

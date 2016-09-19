@@ -96,7 +96,7 @@ text-align: center;
     /*min-height: 95%;*/
 		position:relative;
 }
-#p1-values-list > li{
+#values-list > li, #benefits-list > li, #faqs-list > li{
     font-size: 150%;
 }
 .icon-900{
