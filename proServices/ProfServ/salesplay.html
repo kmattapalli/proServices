@@ -18,9 +18,9 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     -->
     <!--Font Awesome
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
--->
-        <!--ionicons
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+    -->
+    <!--ionicons
     <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
         -->
     <!--JQuery-->
@@ -37,106 +37,31 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-animate.js"></script>
+
+    <!-- Device Detector -->
+    <script src="https://rawgit.com/srfrnk/re-tree/master/re-tree.js" type="text/javascript"></script>
+    <script src="https://rawgit.com/srfrnk/ng-device-detector/master/ng-device-detector.js" type="text/javascript"></script>
+
+    <!-- ng-dialog -->
+    <script src="scripts/ngDialog.min.js" type="text/javascript"></script>
+    <link href="css/ngDialog.min.css" rel="stylesheet">
+    <link href="css/ngDialog-theme-default.css" rel="stylesheet">
     <script src="app/app.js"></script>
     <link rel="stylesheet" type="text/css" href="css/styles.css" />
     <link rel="stylesheet" type="text/css" href="" />
 
 </head>
 <body id="ibody" ng-app="Sellocity">
-    <header>    </header>
+    <div device-detector>    </div>
+
     <main class="container">
         <div ng-view></div>
-        
-
-
-
-        <!-- PRODUCT 2 BENEFITS -->
-<!--        <div id="p2f" border="0">
-            <div class="page-header"><h2 id="p2f-heading" align="center">Vaio's perspective of GPU Boost</h2></div>
-            <div id="wrapper" class="well container">
-                <div class="row vertical-align">
-                    <div class="col-sm-10">
-                        <ul id="p2-benefit-list" class="list-group">
-                            <li id="p2b1" class="list-group-item"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>  </li>
-                            <li id="p2b2" class="list-group-item"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>  </li>
-                            <li id="p2b3" class="list-group-item"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>  </li>
-                            <li id="p2b4" class="list-group-item"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>  </li>
-                        </ul>
-                    </div>
-                    <div id="img-right" class="col-sm-2">
-                        <span id="imgright" class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
-                        <!--<img id="imgright" src="..\images\right.png" />
-                    </div>
-                </div>
-            </div>
-        </div>
- -->
-        <!-- PRODUCT 2 END -->
-<!--
-        <table id="p2f" border="0">
-            <tr><td colspan="2" align="center" valign="bottom"><p><img id="Img6" src="" /></p></td></tr>
-            <tr><td colspan="2" align="center" valign="top"><p>Vaio - z</p></td></tr>
-            <tr>
-                <td>
-                    <table id="p2af" border="0">
-                        <tr>
-                            <td width="50%" ALIGN="Center" id="p2aftd1"><p><h1>Complete Vaio Z Specs</h1></p></td>
-                            <td width="50%" ALIGN="Center" id="p2aftd2"><p><h1>Vaio Z Awards</h1></p></td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2" id="p2aftd3">
-                    <table id="p2bf" border="0">
-                        <tr>
-                            <td width="100%" ALIGN="Center" bgcolor="blue"><p><h1 style="color:white;">What Vaio - Z would do to your business</h1></p></td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-        </table>
-
-
-        <table id="p3f" border="0">
-            <tr><td colspan="2" align="center" valign="down"><p><img id="Img7" src="" /></p></td></tr>
-            <tr><td colspan="2" id="p3ftd1" align="center" valign="top" bgcolor="blue"><p><h1 style="color:white;">With Vaio-Z you will get</h1></p></td></tr>
-            <tr>
-                <td width="100%">
-                    <table id="p3ftbl1" width="100%" border="0">
-                        <tr>
-                            <td ALIGN="Left"><p><h2>* Lowest cost per wattage</h2></p></td>
-                            <td width="30%" ALIGN="right" rowspan="4"><p><img id="imgright2" src="..\images\right.png" /></p></td>
-                        </tr>
-                        <tr>
-                            <td ALIGN="Left"><p><h2>* CPU independent acceleration</h2></p></td>
-                        </tr>
-                        <tr>
-                            <td ALIGN="Left"><p><h2>* Fastest memory reads in the industry</h2></p></td>
-                        </tr>
-                        <tr>
-                            <td ALIGN="Left"><p><h2>* Award wining cooling algorthms</h2></p></td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-
-        </table>
-
-        <table id="p4f" border="0">
-            <tr><td colspan="2" align="center" valign="down"><p><img id="Img8" src="" /></p></td></tr>
-            <tr><td colspan="2" align="left" valign="down"><p><h3>" We are very happy with the cost savings from <br /> Vaio-Z" - CTO - Charles M , Exxon</h3></p></td></tr>
-            <tr><td colspan="2" align="right" valign="down"><p><h3>" Vaio-Z was the savior for our 3D animation <br /> project" VO Engg - Tom Kirby , Paramount</h3></p></td></tr>
-            <tr><td align="center"><p><img id="img9" src="..\images\right.png" /></p></td></tr>
-            </tr>
-        </table>
--->
     </main>
 
 
     <footer class="page-footer transparent" ng-controller="footerCtrl">
         <div id="footer-wrapper" class="container right-align">
-            <a href="#/painpoints"><img id="cust-image" ng-src="{{custImg}}" /></a>
+            <a href="#/painpoints" ng-click="sendAnalytics('0000', 'homeButton', 'painpoints')"><img id="cust-image" ng-src="{{custImg}}" /></a>
         </div>
     </footer>
     <!--<footer id="footer"></footer>-->

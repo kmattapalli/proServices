@@ -12,7 +12,9 @@
             </ul>
         </div>
         <div class="col m2">
-            <a href="#/{{faqsNext}}"><i class="material-icons icon-1000">keyboard_arrow_right</i></a>
+            <a href="#/{{faqsNext}}" ng-click="sendAnalytics(Pain.spmapId, 'p'+Pain.index+'-faqsNext', faqsNext)">
+                <i class="material-icons icon-1000">keyboard_arrow_right</i>
+            </a>
         </div>
     </div>
 </div>

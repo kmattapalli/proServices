@@ -11,7 +11,9 @@
         </div>
         <div class="row">
             <div class="col m3 offset-m9">
-                <a href="#/{{awardsNext}}"><i class="material-icons icon-900">keyboard_arrow_right</i></a>
+                <a href="#/{{awardsNext}}" ng-click="sendAnalytics(Pain.spmapId, 'p'+Pain.index+'-awardsNext', awardsNext)">
+                    <i class="material-icons icon-900">keyboard_arrow_right</i>
+                </a>
             </div>
         </div>
     </div>

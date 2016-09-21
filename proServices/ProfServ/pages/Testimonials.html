@@ -1,7 +1,7 @@
 ﻿        <!-- PRODUCT 1 VALUES BEGIN -->
 <div id="p{{Pain.index}}-awards" border="0">
     <!--<h2 alingn="center"><img id="p1i1" src="images\p1_features.jpg" /></h2>-->
-    <h4 id="testimonials-title" align="center">{{testimonialsTitle}}</h4>
+    <h4 id="testimonials-title" align="center"></h4>
 
     <div id="testimonials-wrapper" ng-init="vAlign('#testimonials-wrapper', '10')">
         <div id="testimonials-row" class="row row-centered" ng-repeat="testimonial in Pain.testimonials">
@@ -12,7 +12,9 @@
         </div>
         <div class="row">
             <div class="col m3 offset-m9">
-                <a href="#/{{testimonialsNext}}"><i class="material-icons icon-900">keyboard_arrow_right</i></a>
+                <a href="#/{{testimonialsNext}}" ng-click="sendAnalytics(Pain.spmapId, 'p'+Pain.index+'-testimonialsNext', testimonialsNext)">
+                    <i class="material-icons icon-900">keyboard_arrow_right</i>
+                </a>
             </div>
         </div>
     </div>

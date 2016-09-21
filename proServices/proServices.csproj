@@ -105,7 +105,6 @@
     <Content Include="ProfServ\images\Claim1.JPG" />
     <Content Include="ProfServ\images\Claim2.JPG" />
     <Content Include="ProfServ\images\Client.jpg" />
-    <Content Include="ProfServ\images\comp.JPG" />
     <Content Include="ProfServ\images\Customer.jpg" />
     <Content Include="ProfServ\images\DefaultBackground.jpg" />
     <Content Include="ProfServ\images\email_icon.png" />
@@ -116,12 +115,19 @@
     <Content Include="ProfServ\images\p1.JPG" />
     <Content Include="ProfServ\images\pain_to_prod_connector.png" />
     <Content Include="ProfServ\images\p4.jpg" />
-    <Content Include="ProfServ\images\PowerOff.jpg" />
     <Content Include="ProfServ\images\PP1.JPG" />
     <Content Include="ProfServ\images\PP2.jpg" />
     <Content Include="ProfServ\images\PP3.jpg" />
     <Content Include="ProfServ\images\qa.JPG" />
     <Content Include="ProfServ\images\right.png" />
+    <Content Include="ProfServ\images\saket_p1.JPG" />
+    <Content Include="ProfServ\images\saket_p2.JPG" />
+    <Content Include="ProfServ\images\saket_p3.JPG" />
+    <Content Include="ProfServ\images\saket_p4.jpg" />
+    <Content Include="ProfServ\images\saket_PP1.JPG" />
+    <Content Include="ProfServ\images\saket_PP2.jpg" />
+    <Content Include="ProfServ\images\saket_PP3.jpg" />
+    <Content Include="ProfServ\images\saket_PP4.jpg" />
     <Content Include="ProfServ\images\SalesPerson.jpg" />
     <Content Include="ProfServ\images\send_text_icon.png" />
     <Content Include="ProfServ\images\share_button.png" />
@@ -130,7 +136,6 @@
     <Content Include="ProfServ\images\star_bullet_botton_blk.png" />
     <Content Include="ProfServ\images\star_with_tick_icon.png" />
     <Content Include="ProfServ\images\submit_button.png" />
-    <Content Include="ProfServ\images\v.JPG" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -151,7 +156,6 @@
     <Content Include="ProfServ\pages\welcome.html" />
     <Content Include="ProfServ\pages\Yes.html" />
     <Content Include="Service References\Application Insights\ConnectedService.json" />
-    <Content Include="ProfServ\images\desktop.ini" />
     <None Include="Properties\PublishProfiles\SCityWS - Web Deploy.pubxml" />
     <Content Include="Service References\SpidInfo\proServices.SpidInfo.GetSpidBasicResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>

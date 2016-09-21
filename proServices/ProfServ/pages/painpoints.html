@@ -4,13 +4,13 @@
     <div id="pp-rows" class="well">
         <div id="pp-row-1" class="row row-centered" >
             <div id="pp1" class="col m6 col-centered" >
-                <a href="#/p{{Pain1.index}}-values">
+                <a href="#/p{{Pain1.index}}-values" ng-click="sendAnalytics(Pain1.spmapId, 'p'+Pain1.index, 'p'+Pain1.index+'-values')">
                     <img id="pp1img" class="responsive-img" ng-src="{{Pain1.painPointImage}}" /><br />
                     <label for="pp1img">{{Pain1.painPoint}}</label>
                 </a>
             </div>
             <div id="pp2" class="col m6 col-centered">
-                <a href="#/p{{Pain2.index}}-values">
+                <a href="#/p{{Pain2.index}}-values" ng-click="sendAnalytics(Pain2.spmapId, 'p'+Pain2.index, 'p'+Pain2.index+'-values')">
                     <img id="pp2img" class="responsive-img" ng-src="{{Pain2.painPointImage}}" /><br />
                     <label for="pp2img">{{Pain2.painPoint}}</label>
                 </a>
@@ -18,12 +18,12 @@
         </div>
         <div id="pp-row-2" class="row row-centered">
             <div id="pp3" class="col m6 col-centered">
-                <a href="#/p{{Pain3.index}}-values">
+                <a href="#/p{{Pain3.index}}-values" ng-click="sendAnalytics(Pain3.spmapId, 'p'+Pain3.index, 'p'+Pain3.index+'-values')">
                     <img id="pp3img" class="responsive-img" ng-src="{{Pain3.painPointImage}}" /><br />
                     <label for="pp3img">{{Pain3.painPoint}}</label>
                 </a>
             </div>
-            <div id="pp4" class="col m6 col-centered">
+            <div id="pp4" class="col m6 col-centered" ng-click="sendAnalytics(Pain4.spmapId, 'p'+Pain4.index, 'p'+Pain4.index+'-values')">
                 <a href="#/p{{Pain4.index}}-values">
                     <img id="pp4img" class="responsive-img" ng-src="{{Pain4.painPointImage}}" /><br />
                     <label for="pp4img">{{Pain4.painPoint}}</label>

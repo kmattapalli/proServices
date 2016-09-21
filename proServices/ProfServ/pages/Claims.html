@@ -3,7 +3,7 @@
     <!--<h2 alingn="center"><img id="p1i1" src="images\p1_features.jpg" /></h2>-->
     <h4 id="claims-title" align="center">{{claimsTitle}}</h4>
 
-    <div id="claims-wrapper"  ng-init="vAlign('#claims-wrapper', '4')">
+    <div id="claims-wrapper" ng-init="vAlign('#claims-wrapper', '4')">
         <div id="claims-row" class="row row-centered" ng-repeat="claim in Pain.claims">
             <div id="" class="col m6 col-centered">
                 <img id="pp1img" class="responsive-img" ng-src="{{claim}}" /><br />
@@ -11,7 +11,9 @@
         </div>
         <div class="row">
             <div class="col m3 offset-m9">
-                <a href="#/{{claimsNext}}"><i class="material-icons icon-900">keyboard_arrow_right</i></a>
+                <a href="#/{{claimsNext}}" ng-click="sendAnalytics(Pain.spmapId, 'p'+Pain.index+'-claimsNext', claimsNext)">
+                    <i class="material-icons icon-900">keyboard_arrow_right</i>
+                </a>
             </div>
         </div>
     </div>

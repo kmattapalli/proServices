@@ -1,19 +1,21 @@
 ﻿        <!-- PRODUCT 1 VALUES BEGIN -->
 <div id="p{{Pain.index}}-values" border="0">
     <!--<h2 alingn="center"><img id="p1i1" src="images\p1_features.jpg" /></h2>-->
-    <h4 id="values-title" align="center">{{valuesTitle}}</h4>
-        
-        <div  id="values-wrapper" class="row vertical-align" ng-init="vAlign('#values-wrapper', '4')">
-            <div class="col m10">
-                <ul id="values-list" class="collection">
-                    <li ng-repeat="value in Pain.values" class="collection-item">
-                        <i class="material-icons">done</i> {{value}}
-                    </li>
-                </ul>
-            </div>
-            <div class="col m2">
-                <a href="#/{{valuesNext}}"><i class="material-icons icon-1000">keyboard_arrow_right</i></a>
-            </div>
+    <h4 id="values-title" align="center">{{Pain.valuesTitle}}</h4>
+
+    <div id="values-wrapper" class="row vertical-align" ng-init="vAlign('#values-wrapper', '4')">
+        <div class="col m10">
+            <ul id="values-list" class="collection">
+                <li ng-repeat="value in Pain.values" class="collection-item">
+                    <i class="material-icons">done</i> {{value}}
+                </li>
+            </ul>
         </div>
+        <div class="col m2">
+            <a href="#/{{valuesNext}}" ng-click="sendAnalytics(Pain.spmapId, 'p'+Pain.index+'-valuesNext', valuesNext)">
+                <i class="material-icons icon-1000">keyboard_arrow_right</i>
+            </a>
+        </div>
+    </div>
 </div>
 <!-- PRODUCT 1 VALUES END -->

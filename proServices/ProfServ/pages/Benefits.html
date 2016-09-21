@@ -1,7 +1,7 @@
 ﻿        <!-- PRODUCT 1 BENEFITS BEGIN -->
 <div id="p{{Pain.index}}-benefits" border="0">
     <!--<h2 alingn="center"><img id="p1i1" src="images\p1_features.jpg" /></h2>-->
-    <h4 id="benefits-title" align="center">{{benefitsTitle}}</h4>
+    <h4 id="benefits-title" align="center">{{Pain.product}} Benefits</h4>
 
     <div id="benefits-wrapper" class="row vertical-align" ng-init="vAlign('#benefits-wrapper', '4')">
         <div class="col m10">
@@ -12,7 +12,9 @@
             </ul>
         </div>
         <div class="col m2">
-            <a href="#/{{benefitsNext}}"><i class="material-icons icon-1000">keyboard_arrow_right</i></a>
+            <a href="#/{{benefitsNext}}" ng-click="sendAnalytics(Pain.spmapId, 'p'+Pain.index+'-benefitsNext', benefitsNext)">
+                <i class="material-icons icon-1000">keyboard_arrow_right</i>
+            </a>
         </div>
     </div>
 </div>
