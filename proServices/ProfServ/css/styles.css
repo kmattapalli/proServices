@@ -3,7 +3,13 @@ body, h3, h4{
 		font-family: 'Arial', arial !important;
 		-webkit-font-smoothing: antialiased;
 }
-
+#yesModal, #noModal, #moreModal, #specsModal, #dummyModal{
+    width: 70%;
+}
+#specsModal{
+    width: 80%;
+    height: 90%;
+}
 
 .margin-top{
     margin-top: 100px;
@@ -13,6 +19,13 @@ body {
     min-height: 100vh;
     flex-direction: column;
     
+}
+.collection{
+    border: none !important;
+}
+.collection-item{
+    border: none !important;
+    margin-top: 20px !important;
 }
 .bgImg{
     background: url(../images/DefaultBackground.jpg) no-repeat left bottom;
@@ -143,10 +156,22 @@ li{
     text-align: right;
     border: solid 1px #c3c3c3;
 }
+.footer-disable{
+    display: none;
+}
 label{
     font-size: 125%;
 }
-
+.affirm-content{
+    font-size: 125%;
+    line-height: 1.7em;
+}
+.line-height{
+    line-height: 1.7em;
+}
+a{
+    cursor: pointer;
+}
 /* centered columns styles */
 .row-centered {
     text-align:center;
@@ -160,5 +185,18 @@ label{
 @media only screen and (max-width: 472px) {
     .col-centered {
         float:none !important;
+    }
+}
+@media only screen and (max-width: 992px){
+    .saket{
+        display: none;
+    }
+    .yo{
+        margin-left: 0 !important;
+    }
+}
+@media only screen and (min-width: 992px){
+    .medha{
+        display: none;
     }
 }

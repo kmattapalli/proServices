@@ -1,11 +1,18 @@
 ﻿<!-- WELCOME SCREEN BEGIN -->
 
-<div id="welcome" class="container-fluid">
-    <div id="welcome-page-header" class="white">
+<div id="welcome" class="container">
+    <div id="welcome-page-header" class="transparent">
         <h3 class="right-align">
-            <span id="welcome-greeting" class="greeting right-align">{{greeting}}, {{custName}}</span>
+            <span id="welcome-greeting" class="greeting right-align">{{greeting}}{{custName}}</span>
         </h3>
-        <h4 class="right-align">Let me help you with your purchases.</h4>
+        <h4 class="right-align">{{secondLine}}</h4>
+    </div>
+    <div class="row margin-top">
+        <div class="col m2 offset-m10">
+            <a href="#/painpoints" ng-click="sendAnalytics('0000', 'homeButton', 'painpoints')">
+                <i class="material-icons icon-1000">{{rightArrow}}</i>
+            </a>
+        </div>
     </div>
 </div>
 <!-- WELCOME SCREEN END -->

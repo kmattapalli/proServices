@@ -54,12 +54,12 @@
 <body id="ibody" ng-app="Sellocity">
     <div device-detector>    </div>
 
-    <main class="container">
+    <main class="container-fluid">
         <div ng-view></div>
     </main>
 
 
-    <footer class="page-footer transparent" ng-controller="footerCtrl">
+    <footer id="page-footer" class="page-footer transparent footer-disable" ng-controller="footerCtrl">
         <div id="footer-wrapper" class="container right-align">
             <a href="#/painpoints" ng-click="sendAnalytics('0000', 'homeButton', 'painpoints')"><img id="cust-image" ng-src="{{custImg}}" /></a>
         </div>

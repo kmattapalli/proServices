@@ -98,6 +98,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ProfServ\app\app.js" />
+    <Content Include="ProfServ\css\ngDialog-theme-default.css" />
+    <Content Include="ProfServ\css\ngDialog.min.css" />
     <Content Include="ProfServ\images\Award1.JPG" />
     <Content Include="ProfServ\images\Award2.JPG" />
     <Content Include="ProfServ\images\Award3.JPG" />
@@ -141,6 +143,8 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="ProfServ\pages\Affirm.html" />
+    <Content Include="ProfServ\pages\disabled.html" />
+    <Content Include="ProfServ\pages\dummyPain.html" />
     <Content Include="ProfServ\pages\modalContent.html" />
     <Content Include="ProfServ\pages\Awards.html" />
     <Content Include="ProfServ\pages\Benefits.html" />
@@ -155,6 +159,7 @@
     <Content Include="ProfServ\pages\painpoints.html" />
     <Content Include="ProfServ\pages\welcome.html" />
     <Content Include="ProfServ\pages\Yes.html" />
+    <Content Include="ProfServ\scripts\ngDialog.min.js" />
     <Content Include="Service References\Application Insights\ConnectedService.json" />
     <None Include="Properties\PublishProfiles\SCityWS - Web Deploy.pubxml" />
     <Content Include="Service References\SpidInfo\proServices.SpidInfo.GetSpidBasicResponse.datasource">

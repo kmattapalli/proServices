@@ -6,38 +6,185 @@
     <div id="affirm-wrapper" ng-init="vAlign('#affirm-wrapper', '10')">
         <div id="awards-row-1" class="row row-centered">
             <div id="pp1" class="col m10 offset-m2 left-align">
-                <h4>Dear {{Play.clientContact}}, is {{Pain.product}} something that will help you with your "{{Pain.painPoint}}" issues?</h4>
+                <h4 class="line-height">
+                    Dear {{Play.clientContact}}, is {{Pain.product}} something that will help you with your "{{Pain.painPoint}}" issues?
+                </h4>
             </div>
         </div>
         <div class="row">
             <div class="col m2 offset-m5">
                 <h5>
-                    <a href="#/{{affirmYes}}" ng-click="sendAnalytics(Pain.spmapId, 'p'+Pain.index+'-affirmYes', affirmYes)">
+                    <a ng-click="openYesModal(); sendAnalytics(Pain.spmapId, 'p'+Pain.index+'-affirmYes', affirmYes)">
                         Yes
                     </a>
                 </h5>
             </div>
             <div class="col m3">
                 <h5>
-                    <a href="#/{{affirmMore}}" ng-click="sendAnalytics(Pain.spmapId, 'p'+Pain.index+'-affirmMore', affirmMore)">
+                    <a ng-click="openMoreModal(); sendAnalytics(Pain.spmapId, 'p'+Pain.index+'-affirmMore', affirmMore)">
                         More Info
                     </a>
                 </h5>
             </div>
             <div class="col m2">
                 <h5>
-                    <a href="#/{{affirmNo}}" ng-click="sendAnalytics(Pain.spmapId, 'p'+Pain.index+'-affirmNo', affirmNo)">
+                    <a ng-click="openNoModal(); sendAnalytics(Pain.spmapId, 'p'+Pain.index+'-affirmNo', affirmNo)">
                         No
                     </a>
                 </h5>
             </div>
         </div>
         <div class="row row-centered">
-            <div class="col m3 offset-m6">
+            <div class="col m3">
+                <a href="#/{{affirmPrevious}}" ng-click="sendAnalytics(Pain.spmapId, 'p'+Pain.index+'-affirmPrevious', affirmPrevious)">
+                    <i class="material-icons icon-1000">keyboard_arrow_left</i>
+                </a>
+            </div>
+            <div class="col m3 offset-m3">
                 <img id="p1img" class="responsive-img" ng-src="{{Pain.productImage}}" /><br />
                 <label class="" for="p1img">{{inStock}}</label>
             </div>
         </div>
     </div>
 </div>
-<!-- PRODUCT 1 VALUES END -->
+<!-- PRODUCT 1 AFFIRM END -->
+<!-- Modal Structure -->
+<div id="yesModal" class="modal">
+    <div class="modal-content">
+        <div id="awards-row-1" class="row row-centered">
+            <div id="pp1" class="col m7 left-align">
+                <h6 class="affirm-content">
+                    Dear {{Play.clientContact}}, <br /><br />
+                    My name is Kevin Banks and I will help you thorugh this investment.
+                    I will be in touch with you shortly to outline our next steps.
+                </h6>
+            </div>
+            <div class="col m2 offset-m2">
+                <div class="row">
+                    <div class="col m12">
+                        <img id="" class="responsive-img" ng-src="{{Person.image}}" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col m6">
+                        <a class="tooltipped phone-tooltip">
+                            <img id="" class="responsive-img" src="images/cellphone_icon.png" />
+                        </a>
+                    </div>
+                    <div class="col m6">
+                        <a href="mailto:{{Person.email}}" class="tooltipped email-tooltip">
+                            <img id="" class="responsive-img" src="images/email_icon.png" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col m6">
+                <h4>Thank you for your time.</h4>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="#/painpoints" class="btn modal-action modal-close waves-effect waves-green btn-flat" ng-click="sendAnalytics(Pain.spmapId, 'p' +Pain.index+'-yesClose', 'painpoints')">
+            Close & Return
+        </a>
+    </div>
+</div>
+
+<div id="moreModal" class="modal">
+    <div class="modal-content">
+        <div id="more-row-1" class="row row-centered">
+            <div id="pp1" class="col m7 left-align">
+                <h6 class="affirm-content">
+                    Dear {{Play.clientContact}}, <br /><br />
+                    My name is Kevin Banks and I will help you get those answers.
+                    Can you please let me know what specifically you would like to know more about?
+                </h6>
+            </div>
+            <div class="col m2 offset-m2">
+                <div class="row">
+                    <div class="col m12">
+                        <img id="" class="responsive-img" ng-src="{{Person.image}}" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col m6">
+                        <a class="tooltipped phone-tooltip">
+                            <img id="" class="responsive-img" src="images/cellphone_icon.png" />
+                        </a>
+                    </div>
+                    <div class="col m6">
+                        <a href="mailto:{{Person.email}}" class="tooltipped email-tooltip">
+                            <img id="" class="responsive-img" src="images/email_icon.png" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col m6">
+                <i class="material-icons prefix">mode_edit</i>
+                <textarea id="moreComment" ng-model="moreComment" class="materialize-textarea"></textarea>
+                <label for="moreComment">Comments</label>
+            </div>
+            <a id="moreSubmit" class="waves-effect waves-light btn" ng-click="moreSubmitClicked()">
+                Submit
+            </a>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="#/painpoints" class="btn modal-action modal-close waves-effect waves-green btn-flat" ng-click="sendAnalytics(Pain.spmapId, 'p' +Pain.index+'-moreClose', 'painpoints')">
+            Close & Return
+        </a>
+    </div>
+</div>
+
+<div id="noModal" class="modal">
+    <div class="modal-content">
+        <div id="no-row-1" class="row row-centered">
+            <div id="pp1" class="col m7 left-align">
+                <h6 class="affirm-content">
+                    Dear {{Play.clientContact}}, <br /><br />
+                    My name is Kevin Banks and I understand from your response that we left some boxes unchecked. <br /><br />
+                    Could you let us know the reasons as to why "{{Pain.product}}"" will not be able to help solve your "{{Pain.painPoint}}" issues?
+                </h6>
+            </div>
+            <div class="col m2 offset-m2">
+                <div class="row">
+                    <div class="col m12">
+                        <img id="" class="responsive-img" ng-src="{{Person.image}}" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col m6">
+                        <a class="tooltipped phone-tooltip">
+                            <img id="" class="responsive-img" src="images/cellphone_icon.png" />
+                        </a>
+                    </div>
+                    <div class="col m6">
+                        <a href="mailto:{{Person.email}}" class="tooltipped email-tooltip">
+                            <img id="" class="responsive-img" src="images/email_icon.png" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col m6">
+                <i class="material-icons prefix">mode_edit</i>
+                <textarea id="noComment" ng-model="noComment"  class="materialize-textarea"></textarea>
+                <label for="noComment">Comments</label>
+            </div>
+            <a id="noSubmit" class="waves-effect waves-light btn" ng-click="noSubmitClicked()">
+                Submit
+            </a>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="#/painpoints" class="btn modal-action modal-close waves-effect waves-green btn-flat" ng-click="sendAnalytics(Pain.spmapId, 'p' +Pain.index+'-noClose', 'painpoints')">
+            Close & Return
+        </a>
+    </div>
+</div>
+

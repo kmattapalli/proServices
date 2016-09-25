@@ -8,9 +8,17 @@ app.config(['$routeProvider', function ($routeProvider) {
             templateUrl: '/ProfServ/pages/welcome.html',
             controller: 'welcomeCtrl'
         })
+        .when('/disabled', {
+            templateUrl: '/ProfServ/pages/disabled.html',
+            controller: 'disabledCtrl'
+        })
         .when('/painpoints', {
             templateUrl: '/ProfServ/pages/painpoints.html',
             controller: 'painpointsCtrl'
+        })
+        .when('/p0-values', {
+            templateUrl: '/ProfServ/pages/dummyPain.html',
+            controller: 'p0Ctrl'
         })
         .when('/p1-values', {
             templateUrl: '/ProfServ/pages/Values.html',
@@ -42,18 +50,6 @@ app.config(['$routeProvider', function ($routeProvider) {
         })
         .when('/p1-affirm', {
             templateUrl: '/ProfServ/pages/Affirm.html',
-            controller: 'p1Ctrl'
-        })
-        .when('/p1-yes', {
-            templateUrl: '/ProfServ/pages/Yes.html',
-            controller: 'p1Ctrl'
-        })
-        .when('/p1-more', {
-            templateUrl: '/ProfServ/pages/MoreInfo.html',
-            controller: 'p1Ctrl'
-        })
-        .when('/p1-no', {
-            templateUrl: '/ProfServ/pages/No.html',
             controller: 'p1Ctrl'
         })
 
@@ -89,18 +85,6 @@ app.config(['$routeProvider', function ($routeProvider) {
             templateUrl: '/ProfServ/pages/Affirm.html',
             controller: 'p2Ctrl'
         })
-        .when('/p2-yes', {
-            templateUrl: '/ProfServ/pages/Yes.html',
-            controller: 'p2Ctrl'
-        })
-        .when('/p2-more', {
-            templateUrl: '/ProfServ/pages/MoreInfo.html',
-            controller: 'p2Ctrl'
-        })
-        .when('/p2-no', {
-            templateUrl: '/ProfServ/pages/No.html',
-            controller: 'p2Ctrl'
-        })
 
         .when('/p3-values', {
             templateUrl: '/ProfServ/pages/Values.html',
@@ -132,18 +116,6 @@ app.config(['$routeProvider', function ($routeProvider) {
         })
         .when('/p3-affirm', {
             templateUrl: '/ProfServ/pages/Affirm.html',
-            controller: 'p3Ctrl'
-        })
-        .when('/p3-yes', {
-            templateUrl: '/ProfServ/pages/Yes.html',
-            controller: 'p3Ctrl'
-        })
-        .when('/p3-more', {
-            templateUrl: '/ProfServ/pages/MoreInfo.html',
-            controller: 'p3Ctrl'
-        })
-        .when('/p3-no', {
-            templateUrl: '/ProfServ/pages/No.html',
             controller: 'p3Ctrl'
         })
 
@@ -179,18 +151,6 @@ app.config(['$routeProvider', function ($routeProvider) {
             templateUrl: '/ProfServ/pages/Affirm.html',
             controller: 'p4Ctrl'
         })
-        .when('/p4-yes', {
-            templateUrl: '/ProfServ/pages/Yes.html',
-            controller: 'p4Ctrl'
-        })
-        .when('/p4-more', {
-            templateUrl: '/ProfServ/pages/MoreInfo.html',
-            controller: 'p4Ctrl'
-        })
-        .when('/p4-no', {
-            templateUrl: '/ProfServ/pages/No.html',
-            controller: 'p4Ctrl'
-        })
 
   .otherwise({
       redirectTo: '/'
@@ -204,14 +164,18 @@ app.run(function ($rootScope, $location) {
     });
 });
 app.service('ServiceCall', function ($http, deviceDetector, $filter) {
+
     var data = {
+        sendData: 'true',
         spid: '',
-        Play: { spid:'', clientContact: '', clientName: '', title: '' },
+        SalesPerson: { firstName:'', lastName:'', phone:'', email:'', image:'' },
+        Play: { status:'', spid:'', playName:'', clientContact: '', clientName: '', clientEmail:'', clientTitle: '' },
         AllPains: [],
-        SessionInfo: { sessionId: 'n/a', spid: '', device: '', browser: '', ip: '', location: 'n/a' },
-        currentPage: ''
+        SessionInfo: { sessionId: 'n/a', spid: '', device: '', browser: '', ip: '', location: '' },
+        currentPage: '',
+        Pain0: { index: '0', spmapId: '0', painPoint: 'Is there anything else we can help you with?', painPointImage: '/ProfServ/Images/PP4.jpg' }
     };
-    
+    console.log("Send data = " + data.sendData);
     data.SessionInfo.browser = deviceDetector.browser;
     //data.SessionInfo.os = deviceDetector.os;
     data.SessionInfo.device = deviceDetector.device;
@@ -219,8 +183,10 @@ app.service('ServiceCall', function ($http, deviceDetector, $filter) {
 
     // Set IP Address
     //setIp();
-    this.setIP = function(ip) {
+    this.setIP_Location = function (ip, location) {
+        //console.log("IP, Location: " + ip + ", " + location)
         data.SessionInfo.ip = ip;
+        data.SessionInfo.location = location;
     }
     this.updateCurrentPage = function (path) {
         if (path == "/") data.currentPage = 'welcome'
@@ -232,26 +198,80 @@ app.service('ServiceCall', function ($http, deviceDetector, $filter) {
     this.getSessionInfo = function () {
         return data.SessionInfo;
     }
-
+    
+    this.sendEmail = function(spmapid, productName, responseType, comments){
+        var url = "http://scityws.azurewebsites.net/Email/Send/";
+        var params = "?spid=" + data.Play.spid + "&spmapid=" + spmapid + "&splayname=" + data.Play.playName + "&productname=" + productName + "&spfname=" + data.SalesPerson.firstName + "&splname=" + data.SalesPerson.lastName + "&spemail=" + data.SalesPerson.email + "&ccname=" + data.Play.clientName + "&ccemail=" + data.Play.clientEmail + "&emailType=" + responseType + "&comments=" + comments;
+        //console.log("Email Params: " + params);
+        url = url + encodeURI(params);
+        //console.log("Email URL: " + url);
+        if (data.sendData == 'true') {
+            $http.get(url).then(function (result) {
+                //console.log(result);
+                if (result.data != "Email Sent") console.log("For Params: "+params+" - Send Email failed");
+                else console.log("For Params: " + params + " - Send Email success");
+            });
+        }
+        if (responseType == "MoreInfo" || responseType == "No" || responseType == "Yes") {
+            var params2 = "?spid=" + data.Play.spid + "&spmapid=" + spmapid + "&responsetype=" + responseType + "&comments=" + comments;
+            //console.log("Response table Params: " + params);
+            url = "http://scityws.azurewebsites.net/Service/PutSpidResponse/" + encodeURI(params2);
+            if (data.sendData == 'true') {
+                $http.get(url).then(function (result) {
+                    //console.log(result);
+                    if (result.data != "Success") console.log("For Params2: "+params+" - Put response in table failed");
+                    else console.log("For Params2: " + params2 + " - Put response in table success");
+                });
+            }
+        }
+    }
     this.sendAnalytics = function (spmapId, eventName, nextPage) {
         var params = "?spid=" + data.SessionInfo.spid + "&spmapId=" + spmapId + "&sessionID=" + data.SessionInfo.sessionId + "&currentPage=" + data.currentPage + "&eventName=" + eventName + "&nextPage=" + nextPage + "&time=" + getTime() + "&device=" + data.SessionInfo.device + "&browser=" + data.SessionInfo.browser + "&ip=" + data.SessionInfo.ip + "&location=" + data.SessionInfo.location;
-
+        params = encodeURI(params);
         var url = "http://scityws.azurewebsites.net/Service/PutAnalytics/" + params;
-        //console.log("Put analytics URL: " + params);
-        return $http.get(url).then(function (result) {
-            //console.log(result);
-            if (result.data != "Success") console.log("Put analytics failed");
-            //else console.log("Put analytics success");
-        });
+        console.log("Put analytics URL: " + params);
+        if (data.sendData == 'true') {
+            $http.get(url).then(function (result) {
+                //console.log(result);
+                if (result.data != "Success") console.log("Send analytics failed");
+                else console.log("Send analytics success");
+            });
+        }
     }
-
+    this.changeSpidStatus = function (spid, status) {
+        data.Play.status = status;      //change local spid status
+        var params = "?spid=" + spid + "&status=" + status;
+        //console.log("Change spid status params: " + params);
+        var url = "http://scityws.azurewebsites.net/Service/SetSpidStatus/" + encodeURI(params);
+        if (data.sendData == 'true') {
+            $http.get(url).then(function (result) {
+                //console.log(result);
+                if (result.data != "Success") console.log("Change spid status failed");
+                else console.log("Change spid status success");
+            });
+        }
+    }
     // Get Time
     //console.log(getTime());
     function getTime() {
         return $filter('date')(new Date(), 'yyyy-MM-dd HH:mm:ss');
     }
 
-    
+    this.setSalesPerson = function (spid) {
+        var email = "atisaket@gmail.com";
+        // Get product values
+        var url = "http://scityws.azurewebsites.net/service/GetSalesPersonInfo/" + spid;
+        return $http.get(url).then(function (result) {
+            data.SalesPerson.firstName = result.data[0].FIRSTNAME;
+            data.SalesPerson.lastName = result.data[0].LASTNAME;
+            data.SalesPerson.phone = result.data[0].PHONE;
+            //data.SalesPerson.email = result.data[0].EMAIL;
+            data.SalesPerson.email = email;
+            data.SalesPerson.image = "Images/"+result.data[0].IMAGE_URL;
+            //console.log("Salesperson name: " + data.SalesPerson.firstName);       
+        });
+    }
+        
     this.setSpid = function (spid) {
         //console.log("Spid = " + spid);
         data.spid = spid;
@@ -259,24 +279,27 @@ app.service('ServiceCall', function ($http, deviceDetector, $filter) {
         data.SessionInfo.spid = spid;
     }
 
-    this.getBasic = function (spid) {
+    this.setBasic = function (spid) {
         //console.log("Get Data");
         var url = "http://scityws.azurewebsites.net/service/GetSpidInfo/" + spid;
-        return $http.get(url);
+        return $http.get(url).then(function (result) {
+            data.Play.status = result.data[0].CSTATUS;
+            //data.Play.status = "L";
+            //console.log("Result" + result.data[0]);
+            data.Play.clientContact = result.data[0].CLIENT_CONTACT_NAME;
+            //console.log("Clinet Name: " + data.Play.clientContact);
+            data.Play.clientName = result.data[0].CLIENT_NAME;
+            //data.Play.clientTitle = result.data[0].NAME;      //using name or title?
+            data.Play.clientTitle = result.data[0].TITLE;
+            data.Play.clientEmail = result.data[0].CLIENT_CONTACT_EMAIL;
+            data.Play.playName = result.data[0].NAME;
+        });
     }
 
-    this.setBasic = function (result) {
-        //console.log("Result" + result.data[0]);
-        data.Play.clientContact = result.data[0].CLIENT_CONTACT_NAME;
-        //console.log("Clinet Name: " + data.Play.clientContact);
-        data.Play.clientName = result.data.CLIENT_NAME;
-        data.Play.title = result.data.TITLE;
-    };
-    this.getSpidMappings = function (spid) {
+    this.setSpidMappings = function (spid) {
         //console.log("Get Mappings");
         var url = "http://scityws.azurewebsites.net/service/GetSpidMappings/" + spid;
-        $http.get(url).then(function (result) {
-            
+        return $http.get(url).then(function (result) {            
             angular.forEach(result.data, function (value, key) {
                 var Pain = { index: '', title:'', spmapId: '', painPoint: '', painPointImage: '', product: '', productImage: '', productInStock: '', valuesTitle:'', values: [], benefits: [], specsUrl: '', manualUrl:'', claims:[], awards:[], testimonials:[], faqs:[] };
                 Pain.index = key + 1;
@@ -373,12 +396,21 @@ app.service('ServiceCall', function ($http, deviceDetector, $filter) {
 
                 //console.log("Pain: " + JSON.stringify(Pain, null, 4));
                 data.AllPains.push(Pain);
+                
             });
-
+            
+            if (data.AllPains.length < 4){
+                data.AllPains.push(data.Pain0);
+                //console.log("Pushing Pain 0");
+            }
             
         });
+        
     }
-    
+
+    this.getSalesPerson = function (spid) {
+        return data.SalesPerson;
+    }
     this.getPlay = function () {
         return data.Play;
     }
@@ -399,44 +431,11 @@ app.service('ServiceCall', function ($http, deviceDetector, $filter) {
         else return null;
     }
 });
-
+app.controller('disabledCtrl', function ($scope) {
+    $scope.text = "This salesplay has been disabled. Please contact the sender for more details.";
+});
 app.controller('welcomeCtrl', function (ServiceCall, $scope, $http, $location) {
-    $("#ibody").addClass("bgImg");
-    function getQueryVariable(variable) {
-        var query = window.location.search.substring(1);
-        var vars = query.split("&");
-        for (var i = 0; i < vars.length; i++) {
-            var pair = vars[i].split("=");
-            if (pair[0] == variable) { return pair[1]; }
-        }
-        return (false);
-    }
-    var spid = getQueryVariable("spid");    //Get spid from URL
-    ServiceCall.setSpid(spid);              //Set spid in ServiceCall.data.SessionInfo
-    //ServiceCall.setIp();                    //Set IP in ServiceCall.data.SessionInfo
     
-    //ServiceCall.sendAnalytics('168', 'welcome', 'urlLoad', 'none');
-    ServiceCall.updateCurrentPage($location.path());
-    
-    //$scope.custName = Data.getName();
-    
-    //console.log("IP: " + myIP());
-
-    ServiceCall.getBasic(spid).then(function (result) {
-        $scope.custName = result.data[0].CLIENT_CONTACT_NAME;
-        ServiceCall.setBasic(result);
-    });
-    ServiceCall.getSpidMappings(spid);
-
-    var url = "https://api.ipify.org?format=json";
-    $http.get(url).then(function (result) {
-        ServiceCall.setIP(result.data.ip);
-        ServiceCall.sendAnalytics('0000','urlLoad', 'none');
-    });
-
-    //console.log("Hi");       //but this is printing data: undefined
-    $scope.greeting = getGreeting();
-
     function getGreeting() {
         var now = new Date();
         var hours = now.getHours();
@@ -448,6 +447,70 @@ app.controller('welcomeCtrl', function (ServiceCall, $scope, $http, $location) {
         //console.log("Greeting = " + msg);
         return msg;
     }
+    function getQueryVariable(variable) {
+        var query = window.location.search.substring(1);
+        var vars = query.split("&");
+        for (var i = 0; i < vars.length; i++) {
+            var pair = vars[i].split("=");
+            if (pair[0] == variable) { return pair[1]; }
+        }
+        return (false);
+    }
+    var spid = getQueryVariable("spid");    //Get spid from URL
+    //var email = getQueryVariable("email");
+    //console.log("Email: " + email);
+    
+    ServiceCall.setSpid(spid);              //Set spid in ServiceCall.data.SessionInfo
+    $scope.sendAnalytics = function (spmapId, eventName, nextPage) {
+        ServiceCall.sendAnalytics(spmapId, eventName, nextPage);
+    }
+    ServiceCall.setBasic(spid).then(function (result) {
+        var Play = ServiceCall.getPlay();
+        console.log("Spid status = " + Play.status)
+        if (Play.status == "D" || Play.status == "I" || Play.status == "A") {
+            $location.path('/disabled');
+        }
+        else {
+            $("#ibody").addClass("bgImg");
+            $("#page-footer").removeClass("footer-disable");
+            $scope.rightArrow = "keyboard_arrow_right"
+            //console.log("inside setBasic")
+            $scope.greeting = getGreeting() + ", ";
+            $scope.secondLine = "Let me help you with your purchases.";
+            $scope.custName = ServiceCall.getPlay().clientContact;
+            ServiceCall.setSpidMappings(spid).then(function (result) {
+                //console.log("inside setSpidMappings")
+                ServiceCall.setSalesPerson(1).then(function (res) {
+                    //console.log("inside setSalesPerson")
+                    if (Play.status == "L") {           //Change spid status to Viewed
+                        ServiceCall.changeSpidStatus(spid, "V");
+                        console.log("New spid status = " + Play.status);
+                        ServiceCall.sendEmail("0", "n/a", "Welcome", "");
+                    }
+                });          //Get sales person info
+            });      // Get spid mapping and all product info
+        }
+
+    });
+    
+    ServiceCall.updateCurrentPage($location.path());
+
+    $.getJSON('http://ipinfo.io', function (data) {
+        //console.log(data)
+        ServiceCall.setIP_Location(data.ip, data.city + ', ' + data.region + ', ' + data.country);
+        ServiceCall.sendAnalytics('0000', 'urlLoad', 'none');
+    })
+
+/*
+    var url = "https://freegeoip.net/json/";
+    $http.get(url).then(function (result) {
+        ServiceCall.setIP_Location(result.ip, data.city + ', ' + data.region_name + ', ' + data.country_name);
+    });
+*/
+    //console.log("Hi");       //but this is printing data: undefined
+    
+
+    
 });
 
 app.controller('painpointsCtrl', function ($scope, ServiceCall, $location) {
@@ -459,6 +522,7 @@ app.controller('painpointsCtrl', function ($scope, ServiceCall, $location) {
     $scope.Pain2 = ServiceCall.getPain2();
     $scope.Pain3 = ServiceCall.getPain3();
     $scope.Pain4 = ServiceCall.getPain4();
+    $scope.Person = ServiceCall.getSalesPerson();
 
     $scope.sendAnalytics = function (spmapId, eventName, nextPage) {
         ServiceCall.sendAnalytics(spmapId, eventName, nextPage);
@@ -481,10 +545,62 @@ app.controller('painpointsCtrl', function ($scope, ServiceCall, $location) {
 
 });
 
+app.controller('p0Ctrl', function ($scope, ServiceCall, $location, $document) {
+    $(document).ready(function () {
+        $('.tooltipped').tooltip({ delay: 50 });
+    });
+    $scope.Play = ServiceCall.getPlay();
+    $scope.Person = ServiceCall.getSalesPerson();
+
+    $scope.openDummyModal = function () {
+        $('#dummyModal').openModal({
+            dismissible: false
+        });        
+    }
+    $scope.comment = "";
+    var isDisabled = false;
+    $scope.infoSubmitClicked = function () {
+        if (isDisabled == false) {
+            isDisabled = true;
+            Materialize.toast('Your comments have been received.', 4000, 'rounded')
+            angular.element(document.querySelector('#dummyComment')).attr('disabled', "true");;
+            $("#submit").addClass('disabled');
+            $scope.sendAnalytics('0', 'p0-comments', 'painpoints')
+            //console.log($scope.comment);
+            ServiceCall.sendEmail("0", "n/a", "OtherInfo", $scope.comment);
+        }
+
+        
+    }
+    $(document).ready(function () {
+        $('.phone-tooltip').tooltip({
+            delay: 50,
+            html: true,
+            position: "bottom",
+            tooltip: "Phone number: "+$scope.Person.phone
+        });
+    });
+    
+    $(document).ready(function () {
+        $('.email-tooltip').tooltip({
+            delay: 50,
+            html: true,
+            position: "bottom",
+            tooltip: "Click to email: "+$scope.Person.email
+        });
+    });
+    
+
+    ServiceCall.updateCurrentPage($location.path());
+    $scope.sendAnalytics = function (spmapId, eventName, nextPage) {
+        ServiceCall.sendAnalytics(spmapId, eventName, nextPage);
+    }
+});
+
 app.controller('p1Ctrl', function ($scope, ServiceCall, $location) {
     $scope.Play = ServiceCall.getPlay();
     $scope.Pain = ServiceCall.getPain1();
-
+    $scope.Person = ServiceCall.getSalesPerson();
     //console.log("P1 Values called");
     //var session_id = $cookie.JSESSIONID.value;
     //console.log("Session ID: " + session_id);
@@ -498,7 +614,20 @@ app.controller('p1Ctrl', function ($scope, ServiceCall, $location) {
         $(id).css('margin-top', mh);
     };
     $scope.vAlign = vAlign;
-
+    $scope.openModal = function () {
+        $('iframe').attr("src", "http://www.pdf995.com/samples/pdf.pdf");
+        $('#specsModal').openModal();
+    }
+    $scope.openYesModal = function () {
+        $('#yesModal').openModal();
+        ServiceCall.sendEmail($scope.Pain.spmapId, $scope.Pain.product, "Yes", "n/a");
+    }
+    $scope.openMoreModal = function () {
+        $('#moreModal').openModal();
+    }
+    $scope.openNoModal = function () {
+        $('#noModal').openModal();        
+    }
     ServiceCall.updateCurrentPage($location.path());
     $scope.sendAnalytics = function (spmapId, eventName, nextPage) {
         ServiceCall.sendAnalytics(spmapId, eventName, nextPage);
@@ -513,36 +642,84 @@ app.controller('p1Ctrl', function ($scope, ServiceCall, $location) {
     else $scope.inStock = "";
 
     // Dynamic Page Links
-    $scope.valuesNext = "p1-specs";
-    $scope.specsNext = "p1-benefits";
+    $scope.valuesPrevious = "painpoints";
+    $scope.valuesNext = "p" + $scope.Pain.index + "-specs";
+    $scope.specsPrevious = "p" + $scope.Pain.index + "-values";
+    $scope.specsNext = "p" + $scope.Pain.index + "-benefits";
+    $scope.benefitsPrevious = "p" + $scope.Pain.index + "-specs";
     //$scope.benefitsNext = "p2-competitive";   //Uncomment when competitive screen is ready
     //$scope.competitiveNext = "p2-claims";
 
     // Optionals stuff      --------------------|
-    if ($scope.Pain.claims != '') $scope.benefitsNext = "p1-claims";                    //if claims exist, go to claims
-    else if ($scope.Pain.awards != '') $scope.benefitsNext = "p1-awards";               //else if awards exist, go to awards
-    else if ($scope.Pain.testimonials != '') $scope.benefitsNext = "p1-testimonials";   //else if testimonials exist, go to testimonials
-    else if ($scope.Pain.faqs != '') $scope.benefitsNext = "p1-faqs";                   //else if faqs exist, go to faqs
-    else $scope.benefitsNext = "p1-affirm";                                             //else, go to affirm
+    // After benefits what screen to go to?
+    if ($scope.Pain.claims != '') {
+        $scope.benefitsNext = "p" + $scope.Pain.index + "-claims";      //if claims exist, go to claims
+        $scope.claimsPrevious = "p" + $scope.Pain.index + "-benefits";  //if benefitsNext is claims, then claimsPrevious is benefits
+    }
+    else if ($scope.Pain.awards != '') {
+        $scope.benefitsNext = "p" + $scope.Pain.index + "-awards";               //else if awards exist, go to awards
+        $scope.awardsPrevious = "p" + $scope.Pain.index + "-benefits";
+    }
+    else if ($scope.Pain.testimonials != '') {
+        $scope.benefitsNext = "p" + $scope.Pain.index + "-testimonials";   //else if testimonials exist, go to testimonials
+        $scope.testimonialsPrevious = "p" + $scope.Pain.index + "-benefits";
+    }
+    else if ($scope.Pain.faqs != '') {
+        $scope.benefitsNext = "p" + $scope.Pain.index + "-faqs";                   //else if faqs exist, go to faqs
+        $scope.faqsPrevious = "p" + $scope.Pain.index + "-benefits";
+    }
+    else {
+        $scope.benefitsNext = "p" + $scope.Pain.index + "-affirm";               //else, go to affirm
+        $scope.affirmPrevious = "p" + $scope.Pain.index + "-benefits";
+    }
 
-    if ($scope.Pain.awards != '') $scope.claimsNext = "p1-awards";                      //if awards exist, go to awards
-    else if ($scope.Pain.testimonials != '') $scope.claimsNext = "p1-testimonials";     //else if testimonials exist, go to testimonials
-    else if ($scope.Pain.faqs != '') $scope.claimsNext = "p1-faqs";                     //else if faqs exist, go to faqs
-    else $scope.claimsNext = "p1-affirm";                                               //else, go to affirm
+    // After claims, what screen to go to?
+    if ($scope.Pain.awards != '') {
+        $scope.claimsNext = "p" + $scope.Pain.index + "-awards";                      //if awards exist, go to awards
+        $scope.awardsPrevious = "p" + $scope.Pain.index + "-claims";
+    }
+    else if ($scope.Pain.testimonials != '') {
+        $scope.claimsNext = "p" + $scope.Pain.index + "-testimonials";     //else if testimonials exist, go to testimonials
+        $scope.testimonialsPrevious = "p" + $scope.Pain.index + "-claims";
+    }
+    else if ($scope.Pain.faqs != '') {
+        $scope.claimsNext = "p" + $scope.Pain.index + "-faqs";                     //else if faqs exist, go to faqs
+        $scope.faqsPrevious = "p" + $scope.Pain.index + "-claims";
+    }
+    else {
+        $scope.claimsNext = "p" + $scope.Pain.index + "-affirm";                                               //else, go to affirm
+        $scope.affirmPrevious = "p" + $scope.Pain.index + "-claims";
+    }
 
-    if ($scope.Pain.testimonials != '') $scope.awardsNext = "p1-testimonials";          //if testimonials exist, go to testimonials
-    else if ($scope.Pain.faqs != '') $scope.awardsNext = "p1-faqs";                     //else if faqs exist, go to faqs
-    else $scope.awardsNext = "p1-affirm";                                               //else, go to affirm
+    // After awards, what screen to go to?
+    if ($scope.Pain.testimonials != '') {
+        $scope.awardsNext = "p" + $scope.Pain.index + "-testimonials";          //if testimonials exist, go to testimonials
+        $scope.testimonialsPrevious = "p" + $scope.Pain.index + "-awards";
+    }
+    else if ($scope.Pain.faqs != '') {
+        $scope.awardsNext = "p" + $scope.Pain.index + "-faqs";                     //else if faqs exist, go to faqs
+        $scope.faqsPrevious = "p" + $scope.Pain.index + "-awards";
+    }
+    else {
+        $scope.awardsNext = "p1-affirm";                                               //else, go to affirm
+        $scope.affirmPrevious = "p" + $scope.Pain.index + "-awards";
+    }
 
-    if ($scope.Pain.faqs != '') $scope.testimonialsNext = "p1-faqs";                    //if faqs exist, go to faqs
-    else $scope.testimonialsNext = "p1-affirm";                                         //else, go to affirm
+    // After testimonials, what screen to go to?
+    if ($scope.Pain.faqs != '') {
+        $scope.testimonialsNext = "p" + $scope.Pain.index + "-faqs";                    //if faqs exist, go to faqs
+        $scope.faqsPrevious = "p" + $scope.Pain.index + "-testimonials";
+    }
+    else {
+        $scope.testimonialsNext = "p" + $scope.Pain.index + "-affirm";                                         //else, go to affirm
+        $scope.affirmPrevious = "p" + $scope.Pain.index + "-testimonials";
+    }
     // Optional Stuff       --------------------|
-
-    $scope.faqsNext = "p1-affirm";
-    $scope.affirmYes = "p1-yes";
-    $scope.affirmMore = "p1-more";
-    $scope.affirmNo = "p1-no";
-
+    // After FAQs
+    if ($scope.Pain.faqs != '') {
+        $scope.faqsNext = "p" + $scope.Pain.index + "-affirm";
+        $scope.affirmPrevious = "p" + $scope.Pain.index + "-faqs";
+    }
     /*May need this for future        
     //$("#pp1-img").css("width", (($("#pp1-img-parent").width()) + "px"));
     //$("#p1-img").css("width", (($("#p1-img-parent").width()) + "px"));
@@ -551,12 +728,64 @@ app.controller('p1Ctrl', function ($scope, ServiceCall, $location) {
     $scope.getRowsTest = function (numRowsTest) {
         return new Array(numRowsTest);
     };*/
+
+
+    $scope.noComment = "";
+    $scope.moreComment = "";
+
+    var isMoreDisabled = false;    
+    $scope.moreSubmitClicked = function () {
+        if (isMoreDisabled == false) {
+            isMoreDisabled = true;
+            Materialize.toast('Your comments have been received.', 4000, 'rounded')
+            angular.element(document.querySelector('#moreComment')).attr('disabled', "true");;
+            $("#moreSubmit").addClass('disabled');
+            $scope.sendAnalytics($scope.Pain.spmapId, 'p1-moreComment', 'p1-affirm')
+            //console.log("More: "+$scope.moreComment);
+            ServiceCall.sendEmail($scope.Pain.spmapId, $scope.Pain.product, "MoreInfo", $scope.moreComment);
+        }
+
+        
+    }
+    var isNoDisabled = false;
+    $scope.noSubmitClicked = function () {
+        if (isNoDisabled == false) {
+            isNoDisabled = true;
+            Materialize.toast('Your comments have been received.', 4000, 'rounded')
+            angular.element(document.querySelector('#noComment')).attr('disabled', "true");;
+            $("#noSubmit").addClass('disabled');
+            $scope.sendAnalytics($scope.Pain.spmapId, 'p1-noComment', 'p1-affirm')
+            //console.log("No: "+$scope.noComment);
+            ServiceCall.sendEmail($scope.Pain.spmapId, $scope.Pain.product, "No", $scope.noComment);
+        }
+
+        
+    }
+
+    $(document).ready(function () {
+        $('.phone-tooltip').tooltip({
+            delay: 50,
+            html: true,
+            position: "bottom",
+            tooltip: "Phone number: " + $scope.Person.phone
+        });
+    });
+
+    $(document).ready(function () {
+        $('.email-tooltip').tooltip({
+            delay: 50,
+            html: true,
+            position: "bottom",
+            tooltip: "Click to email: " + $scope.Person.email
+        });
+    });
+    
 });
 
 app.controller('p2Ctrl', function ($scope, ServiceCall, $location) {
     $scope.Play = ServiceCall.getPlay();
     $scope.Pain = ServiceCall.getPain2();
-
+    $scope.Person = ServiceCall.getSalesPerson();
     //console.log("P2 Values called");
     ServiceCall.updateCurrentPage($location.path());
     $scope.sendAnalytics = function (spmapId, eventName, nextPage) {
@@ -572,6 +801,18 @@ app.controller('p2Ctrl', function ($scope, ServiceCall, $location) {
         $(id).css('margin-top', mh);
     };
     $scope.vAlign = vAlign;
+
+    $scope.openYesModal = function () {
+        $('#yesModal').openModal();
+        ServiceCall.sendEmail($scope.Pain.spmapId, $scope.Pain.product, "Yes", "n/a");
+    }
+    $scope.openMoreModal = function () {
+        $('#moreModal').openModal();
+    }
+    $scope.openNoModal = function () {
+        $('#noModal').openModal();
+    }
+
     // Page Titles
     //$scope.claimsTitle = "Claims2";
     //$scope.awardsTitle = "Awards2";
@@ -610,12 +851,63 @@ app.controller('p2Ctrl', function ($scope, ServiceCall, $location) {
     $scope.affirmYes = "p2-yes";
     $scope.affirmMore = "p2-more";
     $scope.affirmNo = "p2-no";
+
+
+    $scope.noComment = "";
+    $scope.moreComment = "";
+
+    var isMoreDisabled = false;
+    $scope.moreSubmitClicked = function () {
+        if (isMoreDisabled == false) {
+            isMoreDisabled = true;
+            Materialize.toast('Your comments have been received.', 4000, 'rounded')
+            angular.element(document.querySelector('#moreComment')).attr('disabled', "true");;
+            $("#moreSubmit").addClass('disabled');
+            $scope.sendAnalytics($scope.Pain.spmapId, 'p1-moreComment', 'p1-affirm')
+            //console.log("More: " + $scope.moreComment);
+            ServiceCall.sendEmail($scope.Pain.spmapId, $scope.Pain.product, "MoreInfo", $scope.moreComment);
+        }
+
+        
+    }
+    var isNoDisabled = false;
+    $scope.noSubmitClicked = function () {
+        if (isNoDisabled == false) {
+            isNoDisabled = true;
+            Materialize.toast('Your comments have been received.', 4000, 'rounded')
+            angular.element(document.querySelector('#noComment')).attr('disabled', "true");;
+            $("#noSubmit").addClass('disabled');
+            $scope.sendAnalytics($scope.Pain.spmapId, 'p1-noComment', 'p1-affirm')
+            //console.log("No: " + $scope.noComment);
+            ServiceCall.sendEmail($scope.Pain.spmapId, $scope.Pain.product, "No", $scope.noComment);
+        }
+
+        
+    }
+
+    $(document).ready(function () {
+        $('.phone-tooltip').tooltip({
+            delay: 50,
+            html: true,
+            position: "bottom",
+            tooltip: "Phone number: " + $scope.Person.phone
+        });
+    });
+
+    $(document).ready(function () {
+        $('.email-tooltip').tooltip({
+            delay: 50,
+            html: true,
+            position: "bottom",
+            tooltip: "Click to email: " + $scope.Person.email
+        });
+    });
 });
 
 app.controller('p3Ctrl', function ($scope, ServiceCall, $location) {
     $scope.Play = ServiceCall.getPlay();
     $scope.Pain = ServiceCall.getPain3();
-
+    $scope.Person = ServiceCall.getSalesPerson();
     //console.log("p3 Values called");
     ServiceCall.updateCurrentPage($location.path());
     $scope.sendAnalytics = function (spmapId, eventName, nextPage) {
@@ -631,6 +923,18 @@ app.controller('p3Ctrl', function ($scope, ServiceCall, $location) {
         $(id).css('margin-top', mh);
     };
     $scope.vAlign = vAlign;
+
+    $scope.openYesModal = function () {
+        $('#yesModal').openModal();
+        ServiceCall.sendEmail($scope.Pain.spmapId, $scope.Pain.product, "Yes", "n/a");
+    }
+    $scope.openMoreModal = function () {
+        $('#moreModal').openModal();
+    }
+    $scope.openNoModal = function () {
+        $('#noModal').openModal();
+    }
+
     // Page Titles
     //$scope.claimsTitle = "Claims3";
     //$scope.awardsTitle = "Awards3";
@@ -679,12 +983,63 @@ app.controller('p3Ctrl', function ($scope, ServiceCall, $location) {
     $scope.getRowsTest = function (numRowsTest) {
         return new Array(numRowsTest);
     };*/
+
+
+    $scope.noComment = "";
+    $scope.moreComment = "";
+
+    var isMoreDisabled = false;
+    $scope.moreSubmitClicked = function () {
+        if (isMoreDisabled == false) {
+            isMoreDisabled = true;
+            Materialize.toast('Your comments have been received.', 4000, 'rounded')
+            angular.element(document.querySelector('#moreComment')).attr('disabled', "true");;
+            $("#moreSubmit").addClass('disabled');
+            $scope.sendAnalytics($scope.Pain.spmapId, 'p1-moreComment', 'p1-affirm')
+            //console.log("More: " + $scope.moreComment);
+            ServiceCall.sendEmail($scope.Pain.spmapId, $scope.Pain.product, "MoreInfo", $scope.moreComment);
+        }
+
+        
+    }
+    var isNoDisabled = false;
+    $scope.noSubmitClicked = function () {
+        if (isNoDisabled == false) {
+            isNoDisabled = true;
+            Materialize.toast('Your comments have been received.', 4000, 'rounded')
+            angular.element(document.querySelector('#noComment')).attr('disabled', "true");;
+            $("#noSubmit").addClass('disabled');
+            $scope.sendAnalytics($scope.Pain.spmapId, 'p1-noComment', 'p1-affirm')
+            //console.log("No: " + $scope.noComment);
+            ServiceCall.sendEmail($scope.Pain.spmapId, $scope.Pain.product, "No", $scope.noComment);
+        }
+
+        
+    }
+
+    $(document).ready(function () {
+        $('.phone-tooltip').tooltip({
+            delay: 50,
+            html: true,
+            position: "bottom",
+            tooltip: "Phone number: " + $scope.Person.phone
+        });
+    });
+
+    $(document).ready(function () {
+        $('.email-tooltip').tooltip({
+            delay: 50,
+            html: true,
+            position: "bottom",
+            tooltip: "Click to email: " + $scope.Person.email
+        });
+    });
 });
 
 app.controller('p4Ctrl', function ($scope, ServiceCall, $location) {
     $scope.Play = ServiceCall.getPlay();
     $scope.Pain = ServiceCall.getPain4();
-
+    $scope.Person = ServiceCall.getSalesPerson();
     //console.log("p4 Values called");
     ServiceCall.updateCurrentPage($location.path());
     $scope.sendAnalytics = function (spmapId, eventName, nextPage) {
@@ -700,6 +1055,18 @@ app.controller('p4Ctrl', function ($scope, ServiceCall, $location) {
         $(id).css('margin-top', mh);
     };
     $scope.vAlign = vAlign;
+
+    $scope.openYesModal = function () {
+        $('#yesModal').openModal();
+        ServiceCall.sendEmail($scope.Pain.spmapId, $scope.Pain.product, "Yes", "n/a");
+    }
+    $scope.openMoreModal = function () {
+        $('#moreModal').openModal();
+    }
+    $scope.openNoModal = function () {
+        $('#noModal').openModal();
+    }
+
     // Page Titles
     //$scope.claimsTitle = "Claims4";
     //$scope.awardsTitle = "Awards4";
@@ -738,6 +1105,57 @@ app.controller('p4Ctrl', function ($scope, ServiceCall, $location) {
     $scope.affirmYes = "p4-yes";
     $scope.affirmMore = "p4-more";
     $scope.affirmNo = "p4-no";
+
+
+    $scope.noComment = "";
+    $scope.moreComment = "";
+
+    var isMoreDisabled = false;
+    $scope.moreSubmitClicked = function () {
+        if (isMoreDisabled == false) {
+            isMoreDisabled = true;
+            Materialize.toast('Your comments have been received.', 4000, 'rounded')
+            angular.element(document.querySelector('#moreComment')).attr('disabled', "true");;
+            $("#moreSubmit").addClass('disabled');
+            $scope.sendAnalytics($scope.Pain.spmapId, 'p1-moreComment', 'p1-affirm')
+            //console.log("More: " + $scope.moreComment);
+            ServiceCall.sendEmail($scope.Pain.spmapId, $scope.Pain.product, "MoreInfo", $scope.moreComment);
+        }
+
+        
+    }
+    var isNoDisabled = false;
+    $scope.noSubmitClicked = function () {
+        if (isNoDisabled == false) {
+            isNoDisabled = true;
+            Materialize.toast('Your comments have been received.', 4000, 'rounded')
+            angular.element(document.querySelector('#noComment')).attr('disabled', "true");;
+            $("#noSubmit").addClass('disabled');
+            $scope.sendAnalytics($scope.Pain.spmapId, 'p1-noComment', 'p1-affirm')
+            //console.log("No: " + $scope.noComment);
+            ServiceCall.sendEmail($scope.Pain.spmapId, $scope.Pain.product, "No", $scope.noComment);
+        }
+
+        
+    }
+
+    $(document).ready(function () {
+        $('.phone-tooltip').tooltip({
+            delay: 50,
+            html: true,
+            position: "bottom",
+            tooltip: "Phone number: " + $scope.Person.phone
+        });
+    });
+
+    $(document).ready(function () {
+        $('.email-tooltip').tooltip({
+            delay: 50,
+            html: true,
+            position: "bottom",
+            tooltip: "Click to email: " + $scope.Person.email
+        });
+    });
 });
 
 app.controller('footerCtrl', function ($scope, ServiceCall) {
@@ -746,6 +1164,8 @@ app.controller('footerCtrl', function ($scope, ServiceCall) {
         ServiceCall.sendAnalytics(spmapId, eventName, nextPage);
     }
 });
+
+
 
 
 

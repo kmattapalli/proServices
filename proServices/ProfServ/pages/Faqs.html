@@ -4,7 +4,12 @@
     <h4 id="faqs-title" align="center">{{faqsTitle}}</h4>
 
     <div id="faqs-wrapper" class="row vertical-align" ng-init="vAlign('#faqs-wrapper', '4')">
-        <div class="col m10">
+        <div class="col m3">
+            <a href="#/{{faqsPrevious}}" ng-click="sendAnalytics(Pain.spmapId, 'p'+Pain.index+'-faqsPrevious', faqsPrevious)">
+                <i class="material-icons icon-1000">keyboard_arrow_left</i>
+            </a>
+        </div>
+        <div class="col m7">
             <ul id="faqs-list" class="collection">
                 <li ng-repeat="faq in Pain.faqs track by $index" class="collection-item">
                     Q: {{faq.q}} <br /><br /> A: {{faq.a}}

@@ -4,7 +4,12 @@
     <h4 id="benefits-title" align="center">{{Pain.product}} Benefits</h4>
 
     <div id="benefits-wrapper" class="row vertical-align" ng-init="vAlign('#benefits-wrapper', '4')">
-        <div class="col m10">
+        <div class="col m3">
+            <a href="#/{{benefitsPrevious}}" ng-click="sendAnalytics(Pain.spmapId, 'p'+Pain.index+'-benefitsPrevious', benefitsPrevious)">
+                <i class="material-icons icon-1000">keyboard_arrow_left</i>
+            </a>
+        </div>
+        <div class="col m7">
             <ul id="benefits-list" class="collection">
                 <li ng-repeat="benefit in Pain.benefits" class="collection-item">
                     <i class="material-icons">done</i> {{benefit}}

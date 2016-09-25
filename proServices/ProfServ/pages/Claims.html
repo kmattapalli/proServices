@@ -10,7 +10,12 @@
             </div>
         </div>
         <div class="row">
-            <div class="col m3 offset-m9">
+            <div class="col m3">
+                <a href="#/{{claimsPrevious}}" ng-click="sendAnalytics(Pain.spmapId, 'p'+Pain.index+'-claimsPrevious', claimsPrevious)">
+                    <i class="material-icons icon-1000">keyboard_arrow_left</i>
+                </a>
+            </div>
+            <div class="col m3 offset-m6">
                 <a href="#/{{claimsNext}}" ng-click="sendAnalytics(Pain.spmapId, 'p'+Pain.index+'-claimsNext', claimsNext)">
                     <i class="material-icons icon-900">keyboard_arrow_right</i>
                 </a>

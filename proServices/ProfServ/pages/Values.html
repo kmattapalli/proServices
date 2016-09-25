@@ -3,11 +3,16 @@
     <!--<h2 alingn="center"><img id="p1i1" src="images\p1_features.jpg" /></h2>-->
     <h4 id="values-title" align="center">{{Pain.valuesTitle}}</h4>
 
-    <div id="values-wrapper" class="row vertical-align" ng-init="vAlign('#values-wrapper', '4')">
-        <div class="col m10">
+    <div id="values-wrapper" class="row vertical-align saket" ng-init="vAlign('#values-wrapper', '4')">
+        <div class="col m3">
+            <a href="#/{{valuesPrevious}}" ng-click="sendAnalytics(Pain.spmapId, 'p'+Pain.index+'-valuesPrevious', valuesPrevious)">
+                <i class="material-icons icon-1000">keyboard_arrow_left</i>
+            </a>
+        </div>
+        <div class="col m8">
             <ul id="values-list" class="collection">
-                <li ng-repeat="value in Pain.values" class="collection-item">
-                    <i class="material-icons">done</i> {{value}}
+                <li ng-repeat="value in Pain.values" class="collection-item line-height">
+                    <img src="images/star_bullet_botton_blk.png" height="20" width="20" />&nbsp;&nbsp;&nbsp;{{value}}
                 </li>
             </ul>
         </div>
@@ -15,6 +20,30 @@
             <a href="#/{{valuesNext}}" ng-click="sendAnalytics(Pain.spmapId, 'p'+Pain.index+'-valuesNext', valuesNext)">
                 <i class="material-icons icon-1000">keyboard_arrow_right</i>
             </a>
+        </div>
+    </div>
+
+    <div id="values-wrapper" class="medha" ng-init="vAlign('#values-wrapper', '4')">
+        <div class="row">
+            <div class="col m9 offset-m2">
+                <ul id="values-list" class="collection">
+                    <li ng-repeat="value in Pain.values" class="collection-item">
+                        <img src="images/star_bullet_botton_blk.png" height="20" width="20" />&nbsp;&nbsp;&nbsp;{{value}}
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s2">
+                <a href="#/{{valuesPrevious}}" ng-click="sendAnalytics(Pain.spmapId, 'p'+Pain.index+'-valuesPrevious', valuesPrevious)">
+                    <i class="material-icons icon-1000">keyboard_arrow_left</i>
+                </a>
+            </div>
+            <div class="col s2 offset-s8 pull-s1">
+                <a href="#/{{valuesNext}}" ng-click="sendAnalytics(Pain.spmapId, 'p'+Pain.index+'-valuesNext', valuesNext)">
+                    <i class="material-icons icon-1000">keyboard_arrow_right</i>
+                </a>
+            </div>
         </div>
     </div>
 </div>
