@@ -1,0 +1,594 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!--JQuery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+
+    <!--Material Icons-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Font Awesome-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+    <!--ionicons-->
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
+    
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+    <script src=""></script>
+
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row margin-top ">
+            <div class="col m9">
+                <ul class="nav nav-tabs nav-justified">
+                    <li role="presentation" class=""><a href="create_play_1.html">1</a></li>
+                    <li role="presentation" class=""><a href="create_play_2.html">2</a></li>
+                    <li role="presentation" class="active"><a class="underline" href="#">3</a></li>
+                    <li role="presentation" class="disabled"><a href="#">4</a></li>
+                    <li role="presentation" class="disabled"><a href="#">5</a></li>
+                </ul>
+            </div>
+
+            <div class="col m3">
+                <div class="row left-border">
+                    <div class="col m12 center">
+                        <!-- Dropdown Trigger -->
+                        <a class='dropdown-button' href='#' data-beloworigin="true" data-hover='true' data-activates='dropdown1'>Kevin &nbsp; <i class="glyphicon glyphicon-triangle-bottom"></i></a>
+
+                        <!-- Dropdown Structure -->
+                        <ul id='dropdown1' class='dropdown-content'>
+                            <li><a href="index.html">Dashboard</a></li>
+                            <li><a href="#!">Edit Customer Info</a></li>
+                            <li><a href="manage_profile.html">Edit Your Profile</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#!">Save & Logout</a></li>
+                        </ul>
+                    </div>
+                    <div class="col m12 center top-border"><h6><span><img src="images/create_salesplay.png" height="20" width="20" /></span>&nbsp; <span class="client-company">Pixar</span> performance play</h6></div>
+                </div>
+            </div>
+        </div>
+        <div id="tab3-wrapper" class="row top-border bottom-border">
+            <div class="col m12 center">
+                <h6>VALUE PROPOSITION OF YOUR PRODUCTS &nbsp;&nbsp; <a href="#"><img src="images/Idea_example_icon.png" height="30" width="25" /></a></h6>
+            </div>
+        </div>
+
+        <div class="row margin-top">
+            <div class="col m12">
+                <ul class="collapsible" data-collapsible="accordion">
+                    <li>
+                        <div class="collapsible-header text-align active">Product 1</div>
+                        <div class="collapsible-body">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col m4">
+                                        <h5>Identify 4 key values that Vaio-Z brings to the table</h5>
+                                        <br /><br />
+                                        <div class="center-align"><img src="images/cust.jpg" /></div>
+                                    </div>
+                                    <form class="col m8">
+                                        <div class="row">
+                                            <div class="input-field col s12">
+                                                <input placeholder="Hardware Agnostic Code" id="play-name" type="text" class="">
+                                                <label for="play-name"></label>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="input-field col s12">
+                                                <input placeholder="Global Memory Coalscing" id="client-name" type="text" class="">
+                                                <label for="client-name"></label>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="input-field col s12">
+                                                <input placeholder="Lowest Wattage per Dollar" id="receiver-name" type="text" class="">
+                                                <label for="receiver-name"></label>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="input-field col s12">
+                                                <input placeholder="Highest frames per second" id="receiver-email" type="text" class="">
+                                                <label for="receiver-email"></label>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <hr />
+                                <h5 class="text-align margin-bottom">Upload proof points</h5>
+                                <div class="row margin-bottom">
+                                    <div class="col m1 offset-m1">
+                                        <img src="images/awards_icon.png" style="margin-top: 15px;" height="50" width="55" />
+                                    </div>
+                                    <div class="col m5">
+                                        <h5>Product Awards</h5>
+                                        <p>(85% of customers speed up their buy decision when they view awards)</p>
+                                    </div>
+                                    <div class="col m4">
+                                        <div id="product-awards" class="file-field input-field">
+                                            <div class="btn btn-flat">
+                                                <span class=""><img src="images/upload_icon.png" height="45" width="45" /></span>
+                                                <input type="file" />
+                                            </div>
+                                            <div class="file-path-wrapper">
+                                                <input class="file-path validate" type="text">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row margin-bottom">
+                                    <div class="col m1 offset-m1">
+                                        <img src="images/claims_icon.png" style="margin-top: 15px;" height="50" width="55" />
+                                    </div>
+                                    <div class="col m5">
+                                        <h5>Product Claims</h5>
+                                        <p>(85% of customers speed up their buy decision when they view awards)</p>
+                                    </div>
+                                    <div class="col m4">
+                                        <div id="product-claims" class="file-field input-field">
+                                            <div class="btn btn-flat">
+                                                <span class=""><img src="images/upload_icon.png" height="45" width="45" /></span>
+                                                <input type="file" />
+                                            </div>
+                                            <div class="file-path-wrapper">
+                                                <input class="file-path validate" type="text">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row margin-bottom">
+                                    <div class="col m1 offset-m1">
+                                        <img src="images/Whitepaper_icon.png" style="margin-top: 15px;" height="50" width="55" />
+                                    </div>
+                                    <div class="col m5">
+                                        <h5>Product Whitepapers</h5>
+                                        <p>(85% of customers speed up their buy decision when they view awards)</p>
+                                    </div>
+                                    <div class="col m4">
+                                        <div id="product-whitepapers" class="file-field input-field">
+                                            <div class="btn btn-flat">
+                                                <span class=""><img src="images/upload_icon.png" height="45" width="45" /></span>
+                                                <input type="file" />
+                                            </div>
+                                            <div class="file-path-wrapper">
+                                                <input class="file-path validate" type="text">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row margin-bottom">
+                                    <div class="col m1 offset-m1">
+                                        <img src="images/testimonials_icon.png" style="margin-top: 15px;" height="50" width="55" />
+                                    </div>
+                                    <div class="col m5">
+                                        <h5>Testimonials</h5>
+                                        <p>(85% of customers speed up their buy decision when they view awards)</p>
+                                    </div>
+                                    <div class="col m4 no-margin-left">
+                                        <div id="product-testimonials" class="file-field input-field">
+                                            <div class="btn btn-flat">
+                                                <span class=""><img src="images/upload_icon.png" height="45" width="45" /></span>
+                                                <input type="file" />
+                                            </div>
+                                            <div class="file-path-wrapper">
+                                                <input class="file-path validate" type="text">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row margin-bottom">
+                                    <div class="col m2 offset-m10">
+                                        <a class="btn btn-flat floppy"><i class="fa fa-floppy-o"></i>&nbsp; Save</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header text-align">Product 2</div>
+                        <div class="collapsible-body">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col m4">
+                                        <h5>Identify 4 key values that Vaio-Z brings to the table</h5>
+                                        <br /><br />
+                                        <div class="center-align"><img src="images/cust.jpg" /></div>
+                                    </div>
+                                    <form class="col m8">
+                                        <div class="row">
+                                            <div class="input-field col s12">
+                                                <input placeholder="Hardware Agnostic Code" id="play-name" type="text" class="">
+                                                <label for="play-name"></label>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="input-field col s12">
+                                                <input placeholder="Global Memory Coalscing" id="client-name" type="text" class="">
+                                                <label for="client-name"></label>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="input-field col s12">
+                                                <input placeholder="Lowest Wattage per Dollar" id="receiver-name" type="text" class="">
+                                                <label for="receiver-name"></label>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="input-field col s12">
+                                                <input placeholder="Highest frames per second" id="receiver-email" type="text" class="">
+                                                <label for="receiver-email"></label>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <hr />
+                                <h5 class="text-align margin-bottom">Upload proof points</h5>
+                                <div class="row margin-bottom">
+                                    <div class="col m1 offset-m1">
+                                        <img src="images/awards_icon.png" style="margin-top: 15px;" height="50" width="55" />
+                                    </div>
+                                    <div class="col m5">
+                                        <h5>Product Awards</h5>
+                                        <p>(85% of customers speed up their buy decision when they view awards)</p>
+                                    </div>
+                                    <div class="col m4">
+                                        <div id="product-awards" class="file-field input-field">
+                                            <div class="btn btn-flat">
+                                                <span class=""><img src="images/upload_icon.png" height="45" width="45" /></span>
+                                                <input type="file" />
+                                            </div>
+                                            <div class="file-path-wrapper">
+                                                <input class="file-path validate" type="text">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row margin-bottom">
+                                    <div class="col m1 offset-m1">
+                                        <img src="images/claims_icon.png" style="margin-top: 15px;" height="50" width="55" />
+                                    </div>
+                                    <div class="col m5">
+                                        <h5>Product Claims</h5>
+                                        <p>(85% of customers speed up their buy decision when they view awards)</p>
+                                    </div>
+                                    <div class="col m4">
+                                        <div id="product-claims" class="file-field input-field">
+                                            <div class="btn btn-flat">
+                                                <span class=""><img src="images/upload_icon.png" height="45" width="45" /></span>
+                                                <input type="file" />
+                                            </div>
+                                            <div class="file-path-wrapper">
+                                                <input class="file-path validate" type="text">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row margin-bottom">
+                                    <div class="col m1 offset-m1">
+                                        <img src="images/Whitepaper_icon.png" style="margin-top: 15px;" height="50" width="55" />
+                                    </div>
+                                    <div class="col m5">
+                                        <h5>Product Whitepapers</h5>
+                                        <p>(85% of customers speed up their buy decision when they view awards)</p>
+                                    </div>
+                                    <div class="col m4">
+                                        <div id="product-whitepapers" class="file-field input-field">
+                                            <div class="btn btn-flat">
+                                                <span class=""><img src="images/upload_icon.png" height="45" width="45" /></span>
+                                                <input type="file" />
+                                            </div>
+                                            <div class="file-path-wrapper">
+                                                <input class="file-path validate" type="text">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row margin-bottom">
+                                    <div class="col m1 offset-m1">
+                                        <img src="images/testimonials_icon.png" style="margin-top: 15px;" height="50" width="55" />
+                                    </div>
+                                    <div class="col m5">
+                                        <h5>Testimonials</h5>
+                                        <p>(85% of customers speed up their buy decision when they view awards)</p>
+                                    </div>
+                                    <div class="col m4 no-margin-left">
+                                        <div id="product-testimonials" class="file-field input-field">
+                                            <div class="btn btn-flat">
+                                                <span class=""><img src="images/upload_icon.png" height="45" width="45" /></span>
+                                                <input type="file" />
+                                            </div>
+                                            <div class="file-path-wrapper">
+                                                <input class="file-path validate" type="text">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row margin-bottom">
+                                    <div class="col m2 offset-m10">
+                                        <a class="btn btn-flat floppy"><i class="fa fa-floppy-o"></i>&nbsp; Save</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header text-align">Product 3</div>
+                        <div class="collapsible-body">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col m4">
+                                        <h5>Identify 4 key values that Vaio-Z brings to the table</h5>
+                                        <br /><br />
+                                        <div class="center-align"><img src="images/cust.jpg" /></div>
+                                    </div>
+                                    <form class="col m8">
+                                        <div class="row">
+                                            <div class="input-field col s12">
+                                                <input placeholder="Hardware Agnostic Code" id="play-name" type="text" class="">
+                                                <label for="play-name"></label>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="input-field col s12">
+                                                <input placeholder="Global Memory Coalscing" id="client-name" type="text" class="">
+                                                <label for="client-name"></label>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="input-field col s12">
+                                                <input placeholder="Lowest Wattage per Dollar" id="receiver-name" type="text" class="">
+                                                <label for="receiver-name"></label>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="input-field col s12">
+                                                <input placeholder="Highest frames per second" id="receiver-email" type="text" class="">
+                                                <label for="receiver-email"></label>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <hr />
+                                <h5 class="text-align margin-bottom">Upload proof points</h5>
+                                <div class="row margin-bottom">
+                                    <div class="col m1 offset-m1">
+                                        <img src="images/awards_icon.png" style="margin-top: 15px;" height="50" width="55" />
+                                    </div>
+                                    <div class="col m5">
+                                        <h5>Product Awards</h5>
+                                        <p>(85% of customers speed up their buy decision when they view awards)</p>
+                                    </div>
+                                    <div class="col m4">
+                                        <div id="product-awards" class="file-field input-field">
+                                            <div class="btn btn-flat">
+                                                <span class=""><img src="images/upload_icon.png" height="45" width="45" /></span>
+                                                <input type="file" />
+                                            </div>
+                                            <div class="file-path-wrapper">
+                                                <input class="file-path validate" type="text">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row margin-bottom">
+                                    <div class="col m1 offset-m1">
+                                        <img src="images/claims_icon.png" style="margin-top: 15px;" height="50" width="55" />
+                                    </div>
+                                    <div class="col m5">
+                                        <h5>Product Claims</h5>
+                                        <p>(85% of customers speed up their buy decision when they view awards)</p>
+                                    </div>
+                                    <div class="col m4">
+                                        <div id="product-claims" class="file-field input-field">
+                                            <div class="btn btn-flat">
+                                                <span class=""><img src="images/upload_icon.png" height="45" width="45" /></span>
+                                                <input type="file" />
+                                            </div>
+                                            <div class="file-path-wrapper">
+                                                <input class="file-path validate" type="text">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row margin-bottom">
+                                    <div class="col m1 offset-m1">
+                                        <img src="images/Whitepaper_icon.png" style="margin-top: 15px;" height="50" width="55" />
+                                    </div>
+                                    <div class="col m5">
+                                        <h5>Product Whitepapers</h5>
+                                        <p>(85% of customers speed up their buy decision when they view awards)</p>
+                                    </div>
+                                    <div class="col m4">
+                                        <div id="product-whitepapers" class="file-field input-field">
+                                            <div class="btn btn-flat">
+                                                <span class=""><img src="images/upload_icon.png" height="45" width="45" /></span>
+                                                <input type="file" />
+                                            </div>
+                                            <div class="file-path-wrapper">
+                                                <input class="file-path validate" type="text">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row margin-bottom">
+                                    <div class="col m1 offset-m1">
+                                        <img src="images/testimonials_icon.png" style="margin-top: 15px;" height="50" width="55" />
+                                    </div>
+                                    <div class="col m5">
+                                        <h5>Testimonials</h5>
+                                        <p>(85% of customers speed up their buy decision when they view awards)</p>
+                                    </div>
+                                    <div class="col m4 no-margin-left">
+                                        <div id="product-testimonials" class="file-field input-field">
+                                            <div class="btn btn-flat">
+                                                <span class=""><img src="images/upload_icon.png" height="45" width="45" /></span>
+                                                <input type="file" />
+                                            </div>
+                                            <div class="file-path-wrapper">
+                                                <input class="file-path validate" type="text">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row margin-bottom">
+                                    <div class="col m2 offset-m10">
+                                        <a class="btn btn-flat floppy"><i class="fa fa-floppy-o"></i>&nbsp; Save</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header text-align">Product 4</div>
+                        <div class="collapsible-body">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col m4">
+                                        <h5>Identify 4 key values that Vaio-Z brings to the table</h5>
+                                        <br /><br />
+                                        <div class="center-align"><img src="images/cust.jpg" /></div>
+                                    </div>
+                                    <form class="col m8">
+                                        <div class="row">
+                                            <div class="input-field col s12">
+                                                <input placeholder="Hardware Agnostic Code" id="play-name" type="text" class="">
+                                                <label for="play-name"></label>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="input-field col s12">
+                                                <input placeholder="Global Memory Coalscing" id="client-name" type="text" class="">
+                                                <label for="client-name"></label>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="input-field col s12">
+                                                <input placeholder="Lowest Wattage per Dollar" id="receiver-name" type="text" class="">
+                                                <label for="receiver-name"></label>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="input-field col s12">
+                                                <input placeholder="Highest frames per second" id="receiver-email" type="text" class="">
+                                                <label for="receiver-email"></label>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <hr />
+                                <h5 class="text-align margin-bottom">Upload proof points</h5>
+                                <div class="row margin-bottom">
+                                    <div class="col m1 offset-m1">
+                                        <img src="images/awards_icon.png" style="margin-top: 15px;" height="50" width="55" />
+                                    </div>
+                                    <div class="col m5">
+                                        <h5>Product Awards</h5>
+                                        <p>(85% of customers speed up their buy decision when they view awards)</p>
+                                    </div>
+                                    <div class="col m4">
+                                        <div id="product-awards" class="file-field input-field">
+                                            <div class="btn btn-flat">
+                                                <span class=""><img src="images/upload_icon.png" height="45" width="45" /></span>
+                                                <input type="file" />
+                                            </div>
+                                            <div class="file-path-wrapper">
+                                                <input class="file-path validate" type="text">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row margin-bottom">
+                                    <div class="col m1 offset-m1">
+                                        <img src="images/claims_icon.png" style="margin-top: 15px;" height="50" width="55" />
+                                    </div>
+                                    <div class="col m5">
+                                        <h5>Product Claims</h5>
+                                        <p>(85% of customers speed up their buy decision when they view awards)</p>
+                                    </div>
+                                    <div class="col m4">
+                                        <div id="product-claims" class="file-field input-field">
+                                            <div class="btn btn-flat">
+                                                <span class=""><img src="images/upload_icon.png" height="45" width="45" /></span>
+                                                <input type="file" />
+                                            </div>
+                                            <div class="file-path-wrapper">
+                                                <input class="file-path validate" type="text">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row margin-bottom">
+                                    <div class="col m1 offset-m1">
+                                        <img src="images/Whitepaper_icon.png" style="margin-top: 15px;" height="50" width="55" />
+                                    </div>
+                                    <div class="col m5">
+                                        <h5>Product Whitepapers</h5>
+                                        <p>(85% of customers speed up their buy decision when they view awards)</p>
+                                    </div>
+                                    <div class="col m4">
+                                        <div id="product-whitepapers" class="file-field input-field">
+                                            <div class="btn btn-flat">
+                                                <span class=""><img src="images/upload_icon.png" height="45" width="45" /></span>
+                                                <input type="file" />
+                                            </div>
+                                            <div class="file-path-wrapper">
+                                                <input class="file-path validate" type="text">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row margin-bottom">
+                                    <div class="col m1 offset-m1">
+                                        <img src="images/testimonials_icon.png" style="margin-top: 15px;" height="50" width="55" />
+                                    </div>
+                                    <div class="col m5">
+                                        <h5>Testimonials</h5>
+                                        <p>(85% of customers speed up their buy decision when they view awards)</p>
+                                    </div>
+                                    <div class="col m4 no-margin-left">
+                                        <div id="product-testimonials" class="file-field input-field">
+                                            <div class="btn btn-flat">
+                                                <span class=""><img src="images/upload_icon.png" height="45" width="45" /></span>
+                                                <input type="file" />
+                                            </div>
+                                            <div class="file-path-wrapper">
+                                                <input class="file-path validate" type="text">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row margin-bottom">
+                                    <div class="col m2 offset-m10">
+                                        <a class="btn btn-flat floppy"><i class="fa fa-floppy-o"></i>&nbsp; Save</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+</div>
+        </div>
+
+        <div class="row margin-bottom">
+            <div class="input-field col s12 center-align">
+                <a class="waves-effect waves-light btn btn-flat" href="create_play_2.html"><i class="size-18 icon ion-android-arrow-back"></i>&nbsp; Back </a>
+                <a class="waves-effect waves-light btn" href="create_play_4.html">Next &nbsp;<i class="icon ion-android-arrow-forward"></i></a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

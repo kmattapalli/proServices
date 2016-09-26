@@ -1,0 +1,97 @@
+﻿
+<div class="container-fluid">
+    <div class="row margin-top">
+        <div class="col m8">
+            <ul class="nav nav-tabs nav-justified">
+                <li role="presentation" class="active"><a class="underline" href="#">1</a></li>
+                <li role="presentation" class="disabled"><a href="#">2</a></li>
+                <li role="presentation" class="disabled"><a href="#">3</a></li>
+                <li role="presentation" class="disabled"><a href="#">4</a></li>
+                <li role="presentation" class="disabled"><a href="#">5</a></li>
+            </ul>
+        </div>
+
+        <div class="col m4">
+            <div class="row left-border">
+                <div class="col m12 center">
+                    <!-- Dropdown Trigger -->
+                    <a class='dropdown-button' href="" data-activates='dropdown1'>{{SalesPersonInfo.FIRSTNAME | capitalize}} <i class="glyphicon glyphicon-triangle-bottom"></i></a>
+
+                    <!-- Dropdown Structure -->
+                    <ul id='dropdown1' class='dropdown-content'>
+                        <li><a href="index.html">Dashboard</a></li>
+                        <li><a href="#!">Edit Customer Info</a></li>
+                        <li><a href="manage_profile.html">Edit Your Profile</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#!">Save & Logout</a></li>
+                    </ul>
+                </div>
+                <div class="col m12 center top-border"><h6><span><img src="images/create_salesplay.png" height="20" width="20" /></span>&nbsp; {{BasicPlayInfo.NAME}}</h6></div>
+            </div>
+        </div>
+    </div>
+    <div id="tab1-wrapper">
+        <div class="row top-border bottom-border">
+            <div class="col m12 center margin-bottom margin-top">
+                <h5>Welcome {{SalesPersonInfo.FIRSTNAME | capitalize}}, you are just five steps away from designing your salesplay</h5>
+            </div>
+        </div>
+        <div id="" class="row">
+            <div class="col m12 container-fluid teal lighten-4">
+                <h6 class="center font-125">Describe {{BasicPlayInfo.CLIENT_NAME}}'s painpoints</h6>
+                <div class="row container-fluid valign-wrapper white">
+                    <div class="col m4">
+                        <h4>Customer Challenges: &nbsp;&nbsp; <a href="#"><img src="images/Idea_example_icon.png" height="30" width="25" /></a></h4>
+                        <p class="big-line-height font-125">
+                            Here you will list upto 4 challenges or opportunities your client is facing
+                            currently which your product/service will help solve.
+                        </p>
+                    </div>
+                    <form class="col m8 left-border margin-top margin-bottom">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input id="pp1" type="text" ng-model=Painpoints[0].PAIN_POINT>
+                                <label id="pp1label" for="pp1" class="" >Pain point 1</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input id="pp2" type="text" ng-model=Painpoints[1].PAIN_POINT>
+                                <label id="pp2label" for="pp2" class="">Pain point 2</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input id="pp3" type="text" ng-model=Painpoints[2].PAIN_POINT>
+                                <label id="pp3label" for="pp3" class="">Pain point 3</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input id="pp4" type="text" ng-model=Painpoints[3].PAIN_POINT>
+                                <label id="pp4label" for="pp4" class="">Pain point 4</label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="row margin-bottom">
+                    <div class="input-field col s12 center-align">
+                        <a class="waves-effect waves-light btn" ng-click="next()" title="Save & Continue" href="">Next &nbsp;<i class="icon ion-android-arrow-forward"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $('.dropdown-button').dropdown({
+        inDuration: 300,
+        outDuration: 225,
+        constrain_width: false, // Does not change width of dropdown to that of the activator
+        hover: true, // Activate on hover
+        gutter: 0, // Spacing from edge
+        belowOrigin: true, // Displays dropdown below the button
+        alignment: 'left' // Displays dropdown with edge aligned to the left of button
+    });
+</script>

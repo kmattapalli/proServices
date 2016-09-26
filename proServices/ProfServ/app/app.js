@@ -1,5 +1,19 @@
 ﻿var app = angular.module('Sellocity', ['ngRoute', 'ngAnimate', 'ng.deviceDetector', 'ngDialog']);
+app.directive("ajaxCloak", ['$interval', '$http', function ($interval, $http) {
+    return {
+        restrict: 'A',
+        link: function (scope, element, attrs) {
+            let stop = $interval(() => {
+                if ($http.pendingRequests.length === 0) {
+                    $interval.cancel(stop);
+                    attrs.$set("ajaxCloak", undefined);
+                    element.removeClass("ajax-cloak");
+                }
+            }, 100);
 
+        }
+    };
+}]);
 app.config(['$routeProvider', function ($routeProvider) {
 
     $routeProvider
@@ -558,17 +572,14 @@ app.controller('p0Ctrl', function ($scope, ServiceCall, $location, $document) {
         });        
     }
     $scope.comment = "";
-    var isDisabled = false;
+
     $scope.infoSubmitClicked = function () {
-        if (isDisabled == false) {
-            isDisabled = true;
             Materialize.toast('Your comments have been received.', 4000, 'rounded')
             angular.element(document.querySelector('#dummyComment')).attr('disabled', "true");;
             $("#submit").addClass('disabled');
             $scope.sendAnalytics('0', 'p0-comments', 'painpoints')
             //console.log($scope.comment);
             ServiceCall.sendEmail("0", "n/a", "OtherInfo", $scope.comment);
-        }
 
         
     }

@@ -1,0 +1,204 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!--JQuery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Latest compiled and minified JavaScript
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+
+    <!--Material Icons-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Font Awesome-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+    <!--ionicons-->
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
+
+
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="css/sellocity.css" /> -->
+
+    <style>
+        .tables {
+            padding: 70px;
+        }
+    </style>
+
+
+
+</head>
+<body id="index-body" ng-app="manageplay" ng-controller="salesplayUtilController">
+    <nav class="navbar navbar-fixed-top container-fluid">
+        <div class="row">
+            <ul class="left">
+                <li>
+                    <div class="text-align"><img src="images/cust.jpg" height="70" width="160" /></div>
+
+                </li>
+            </ul>
+            <ul class="right">
+                <li class="right-border margin-top"><h6 class="font-125">Salesplays: &nbsp;&nbsp;</h6></li>
+                <li class="right-border margin-top back-green">
+                    <h6 class="font-125">&nbsp;&nbsp;<span id="live-plays-count">{{numRead}}</span>&nbsp; Read &nbsp;&nbsp;<br /></h6>
+                </li>
+                <li class="right-border margin-top back-blue">
+                    <h6 class="font-125">&nbsp;&nbsp;<span id="active-plays-count">{{numSent}}</span>&nbsp; Sent &nbsp;&nbsp;</h6>
+                </li>
+                <li class="right-border margin-top back-yellow">
+                    <h6 class="font-125">&nbsp;&nbsp;<span id="active-plays-count">{{numWip}}</span>&nbsp;WIP &nbsp;&nbsp;</h6>
+                </li>
+                <li class="margin-top-8"><a href="#"><i class="fa fa-sign-out size-28"></i></a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container salesplays">
+        <div class="row">
+            <div class="col m8 offset-m1">
+                <div class="table">
+                    <div class="row margin-top" ng-repeat="n in data.AllSpids">
+                        <div class="col m1"><div class="circle {{n.color}}" id="{{n.spid}}"><div style="padding-top:5px">{{n.spid}}</div></div></div>
+                        <div class="col m4"><h6>{{n.name}}</h6></div>
+                        <!-- <div class="col 12" ng-repeat="action in salesplayUtil.actions">-->
+                        <!-- <a class="waves-effect waves-teal clone"  ng-model="action.action" ng-click="actionplay(action.action)">{{action.action}}</a></div>-->
+                        <div class="col m2"><a class="waves-effect waves-teal">Edit</a></div>
+                        <div class="col m5"><a class="waves-effect waves-light" ng-click="openSendModal(n.spid, n.name)" >Send salesplay &nbsp; <img src="images/send_SP_icon.png" height="20" width="20" /></a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col m3 sidebar text-align">
+                <ul class="nav nav-list sidenav affix">
+                    <li class="font-125"><span id="greeting">Good Morning </span> <span id="name">Saket</span></li>
+                    <li class="divider margin-bottom margin-top"></li>
+                    <li><a href="corePlatform.html"><img src="images/create_salesplay.png" height="40" width="40" /> &nbsp; Craft New Salesplay</a></li>
+                    <li><a href="#"><img src="images/ViewPerformance.png" height="50" width="60" /> &nbsp; View Performance</a></li>
+                    <li class="divider margin-top margin-bottom"></li>
+                    <li><a href="manage_plays.html"><img src="images/manage_salesplay.png" height="40" width="40" /> &nbsp; Manage Salesplays</a></li>
+                    <li><a href="#"><img src="images/manage_assets.png" height="35" width="50" /> &nbsp; Manage Assets</a></li>
+                    <li><a href="manage_profile.html"><img src="images/manageyour_profile.png" height="40" width="35" /> &nbsp; Manage Profile</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Structure -->
+    <div class="modal fade" id="send-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" ng-click="closeSendModal()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <div class="row">
+                        <div class="col m12">
+                            <h5 class="modal-title" id="SendModal">Who would you like to send this salesplay to?</h5>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="well">
+                            <div class="input-field margin-top">
+                                <input id="emails" type="text" class="">
+                                <label for="emails">What is your Client's email?</label>
+                            </div>
+                            <div class="input-field">
+                                <input type="checkbox" class="filled-in" id="filled-in-box" />
+                                <label for="filled-in-box">I have previewed the salesplay to ensure it is accurate.</label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <a class="modal-action modal-close waves-effect waves-green btn" href=""><i class="material-icons right">send</i>Send</a>
+                </div>
+            </div>
+    </div>
+
+    <script>
+    var manageplay = angular.module("manageplay", []);
+    manageplay.controller("salesplayUtilController", function($scope, $http) {
+        //alert("I am in controller");
+        $scope.data = {
+            AllSpids: [],
+        }
+    	$scope.suid = "2";
+    	$scope.getTeam = function () {
+    	    var url = "http://scityws.azurewebsites.net/Service/GetTeamUsers/";
+    	    var params = "?id="+ $scope.suid;
+    	    url = url + encodeURI(params);
+    	    //console.log("Get active spids: "+ url);
+    	    $http.get(url).then(function (result) {
+    	        angular.forEach(result.data, function (value, key) {
+    	            var teammate = { suid: '', name: '' };
+    	            teammate.suid = value.SUID;
+    	            teammate.firstName = value.FIRST_NAME;
+    	            teammate.lastName = value.LAST_NAME;
+    	            $scope.data.Team.push(teammate);
+    	        });
+    	    });
+    	}
+
+    	$scope.getSpids = function () {
+	        var url = "http://scityws.azurewebsites.net/Service/GetSpidsBySP/";
+	        var params = "?id="+ $scope.suid;
+	        url = url + encodeURI(params);
+	        console.log("Get active spids: "+ url);
+	        $http.get(url).then(function (result) {
+	            $scope.data.AllSpids = [];
+	            $scope.numRead = 0;
+	            $scope.numSent = 0;
+	            $scope.numWip = 0;
+	        	angular.forEach(result.data, function(value, key){
+	        		var spid = {spid:'', name:'', status:'', color:''};
+	        		spid.spid = value.SPID;
+	        		spid.name = value.NAME;
+	        		spid.status = value.CSTATUS;
+	        		if (spid.status == "V") {
+	        		    spid.color = "circle-green";
+	        		    $scope.numRead += 1;
+	        		    $scope.data.AllSpids.push(spid);
+	        		}
+	        		else if (spid.status == "L") {
+	        		    spid.color = "circle-blue";
+	        		    $scope.numSent += 1;
+	        		    $scope.data.AllSpids.push(spid);
+	        		}
+	        		else if (spid.status == "A") {
+	        		    spid.color = "circle-yellow";
+	        		    $scope.numWip += 1;
+	        		    $scope.data.AllSpids.push(spid);
+	        		}
+	        	});
+	        });
+    	}
+    	$scope.shareWith = "";
+    	$scope.getSpids();
+
+   	   $scope.openSendModal = function (spid, name) {
+   	       $scope.shareWith = "";
+   	       //document.getElementById('select-user').selectedIndex = 0;
+   	       $('#send-modal').openModal();
+   	       $scope.sendSpid = spid;
+   	       $scope.sendSpidName = name;
+   	   }
+   	   $scope.closeSendModal = function () {
+   	       $('#send-modal').closeModal();
+   	   }
+    });
+
+    </script>
+</body>
+</html>

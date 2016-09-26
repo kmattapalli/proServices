@@ -97,6 +97,47 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CorePlatform\app\app.js" />
+    <Content Include="CorePlatform\confirm_screen.html" />
+    <Content Include="CorePlatform\corePlatform.html" />
+    <Content Include="CorePlatform\pages\create_play.html" />
+    <Content Include="CorePlatform\pages\create_play_1.html" />
+    <Content Include="CorePlatform\pages\create_play_2.html" />
+    <Content Include="CorePlatform\create_play_3.html" />
+    <Content Include="CorePlatform\create_play_4.html" />
+    <Content Include="CorePlatform\create_play_5.html" />
+    <Content Include="CorePlatform\css\ngDialog-theme-default.css" />
+    <Content Include="CorePlatform\css\ngDialog.min.css" />
+    <Content Include="CorePlatform\css\styles.css" />
+    <Content Include="CorePlatform\disabled_plays.html" />
+    <Content Include="CorePlatform\images\arrowforcreate_SP.png" />
+    <Content Include="CorePlatform\images\awards_icon.png" />
+    <Content Include="CorePlatform\images\changepassword_icon.png" />
+    <Content Include="CorePlatform\images\claims_icon.png" />
+    <Content Include="CorePlatform\images\create_salesplay.png" />
+    <Content Include="CorePlatform\images\cust.jpg" />
+    <Content Include="CorePlatform\images\goodjob_icon.png" />
+    <Content Include="CorePlatform\images\Idea_example_icon.png" />
+    <Content Include="CorePlatform\images\manageyour_profile.png" />
+    <Content Include="CorePlatform\images\manage_assets.png" />
+    <Content Include="CorePlatform\images\manage_salesplay.png" />
+    <Content Include="CorePlatform\images\manage_team.png" />
+    <Content Include="CorePlatform\images\painpoint_icon.png" />
+    <Content Include="CorePlatform\images\preview_icon.png" />
+    <Content Include="CorePlatform\images\product_image_icon.png" />
+    <Content Include="CorePlatform\images\prod_manual_icon.png" />
+    <Content Include="CorePlatform\images\save_icon.png" />
+    <Content Include="CorePlatform\images\send_SP_icon.png" />
+    <Content Include="CorePlatform\images\sp1.jpg" />
+    <Content Include="CorePlatform\images\tech_spec_icon.png" />
+    <Content Include="CorePlatform\images\testimonials_icon.png" />
+    <Content Include="CorePlatform\images\upload_icon.png" />
+    <Content Include="CorePlatform\images\ViewPerformance.png" />
+    <Content Include="CorePlatform\images\Whitepaper_icon.png" />
+    <Content Include="CorePlatform\index.html" />
+    <Content Include="CorePlatform\manage_plays.html" />
+    <Content Include="CorePlatform\manage_profile.html" />
+    <Content Include="CorePlatform\scripts\ngDialog.min.js" />
     <Content Include="ProfServ\app\app.js" />
     <Content Include="ProfServ\css\ngDialog-theme-default.css" />
     <Content Include="ProfServ\css\ngDialog.min.css" />
@@ -233,6 +274,7 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\SpidInfo\" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

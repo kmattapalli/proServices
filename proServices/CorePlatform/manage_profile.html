@@ -1,0 +1,141 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!--JQuery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+
+    <!--Material Icons-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Font Awesome-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+    <!--ionicons-->
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
+
+
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+    <link rel="stylesheet" type="text/css" href="css/sellocity.css" />
+    <script src=""></script>
+
+</head>
+<body id="index-body">
+    <nav class="navbar navbar-fixed-top container-fluid">
+        <div class="row">
+            <ul class="left">
+                <li>
+                    <h5 class="margin-top">Manage your profile,&nbsp;<span class="sales-person">Kevin</span></h5>
+                </li>
+            </ul>
+            <ul class="right">
+                <li class="right-border margin-top"><h6 class="font-125">Salesplays: &nbsp;&nbsp;</h6></li>
+                <li class="right-border margin-top back-green">
+                    <h6 class="font-125">&nbsp;&nbsp;<span id="live-plays-count">3</span>&nbsp; Read &nbsp;&nbsp;<br /></h6>
+                </li>
+                <li class="right-border margin-top back-blue">
+                    <h6 class="font-125">&nbsp;&nbsp;<span id="active-plays-count">1</span>&nbsp; Sent &nbsp;&nbsp;</h6>
+                </li>
+                <li class="right-border margin-top back-yellow">
+                    <h6 class="font-125">&nbsp;&nbsp;<span id="active-plays-count">1</span>&nbsp;WIP &nbsp;&nbsp;</h6>
+                </li>
+                <li class="margin-top-8"><a href="#"><i class="fa fa-sign-out size-28"></i></a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div id="wrapper">
+        <div class="row">
+            <div class="col m9">
+                <div class="row container-fluid valign-wrapper margin-top margin-bottom">
+                    <div class="col m4">
+                        <div class="text-align">
+                            <a href="#">
+                                <img src="images/manageyour_profile.png" height="80" width="70" /><br />
+                                Upload Your Picture
+                            </a>
+                        </div>
+                        <br />
+
+                        <br />
+                        <div class="text-align margin-top">
+                            <a href="#">
+                                <img src="images/changepassword_icon.png" height="80" width="70" /><br />
+                                Change Your Password
+                            </a>
+                        </div>
+                    </div>
+                    <form class="col m7">
+                        <div class="row">
+                            <div class="input-field col l6">
+                                <input id="first-name" type="text" class="">
+                                <label for="first-name">Your First Name</label>
+                            </div>
+                            <div class="input-field col l6">
+                                <input id="last-name" type="text" class="">
+                                <label for="last-name">Your Last Name</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input id="email" type="text" class="">
+                                <label for="email">Your Business Email</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input id="number" type="text" class="">
+                                <label for="number">Contact Number</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input id="designation" type="text" class="">
+                                <label for="designation">Designation</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input id="city" type="text" class="">
+                                <label for="city">City</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input id="vertical" type="text" class="">
+                                <label for="vertical">Industry vertical</label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col m3 sidebar">
+                <ul class="nav nav-list sidenav affix">
+                    <li><a href="index.html"><i class="fa fa-arrow-left" aria-hidden="true"></i> &nbsp; Back</a></li>
+                    <li><a href="create_play.html"><img src="images/create_salesplay.png" height="40" width="40" /> &nbsp; Craft New Salesplay</a></li>
+                    <li><a href="#"><img src="images/ViewPerformance.png" height="50" width="60" /> &nbsp; View Performance</a></li>
+                    <li class="divider margin-bottom margin-top"></li>
+                    <li><a href="manage_plays.html"><img src="images/manage_salesplay.png" height="40" width="40" /> &nbsp; Manage Salesplays</a></li>
+                    <li><a href="#"><img src="images/manage_assets.png" height="35" width="50" /> &nbsp; Manage Assets</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row margin-bottom">
+            <div class="input-field col s12 center-align">
+                <a class="waves-effect waves-light btn" title="Save & Exit" href="index.html">Save & Exit &nbsp;<i class="fa fa-floppy-o"></i></a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

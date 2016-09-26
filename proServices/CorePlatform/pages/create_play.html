@@ -1,0 +1,53 @@
+﻿
+<div class="content container-fluid" id="createPlayWrapper">
+    <div class="row container valign-wrapper">
+        <div class="col l4">
+            <img src="images/cust.jpg" />
+        </div>
+        <form name="createPlayForm" class="col l8 left-border left-padding">
+            <h4 class="center-align">Let's craft your salesplay!</h4>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="playName" name="playName" type="text" class="validate" required ng-model="BasicPlayInfo.playName">
+                    <label for="playName">Salesplay name</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="clientName" name="clientName" type="text" class="validate" required ng-model="BasicPlayInfo.clientName">
+                    <label for="clientName">Customer name</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="receiverName" name="receiverName" type="text" class="validate" required ng-model="BasicPlayInfo.clientContactName">
+                    <label for="receiverName">Salesplay recipient</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="receiverEmail" name="receiverEmail" type="email" class="validate" required ng-model="BasicPlayInfo.clientContactEmail">
+                    <label for="receiverEmail">Customer business email</label>
+                </div>
+            </div>
+            <div class="row">                    
+                <div class="file-field input-field">
+                    <div class="btn btn-flat">
+                        <span class=""><img src="images/upload_icon.png" height="40" width="40" /></span>
+                        <input type="file" accept="image/*"/>
+                    </div>
+                    <div class="file-path-wrapper">
+                        <input id="image" class="file-path validate" name="custImage" type="text" required ng-model="BasicPlayInfo.customerImage">
+                        <label for="image">Customer Image</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row ">
+                <div class="input-field col s12 center-align">
+                    <a class="waves-effect waves-light" ng-click="send()" ><img src="images/arrowforcreate_SP.png" height="80" width="75" /></a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div> 
+
